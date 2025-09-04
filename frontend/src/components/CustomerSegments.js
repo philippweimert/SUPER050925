@@ -28,86 +28,51 @@ const CustomerSegments = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Sehr kompakte section header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-4 border border-white/20">
-            <Users className="w-3 h-3 text-acencia-orange animate-pulse" />
-            <span className="text-white font-semibold text-xs tracking-wide uppercase">Für jede Unternehmensgröße</span>
-          </div>
-          
-          <h2 className="text-xl lg:text-2xl font-bold mb-4 leading-tight">
-            <span className="text-white">Unsere </span>
-            <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
-              Kunden
-            </span>
-            <span className="text-white"> vertrauen uns</span>
+        {/* Professional Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+            Für jede Unternehmensgröße
           </h2>
-          
-          <p className="text-sm text-slate-200 max-w-2xl mx-auto leading-relaxed font-light">
-            Von Start-ups bis zu Konzernen - unsere digitale bAV-Plattform ist 
-            skalierbar und passt sich flexibel an Ihre individuellen Bedürfnisse an.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Maßgeschneiderte bAV-Lösungen, die mit Ihrem Unternehmen wachsen
           </p>
         </div>
 
-        {/* Sehr kompakte segments grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {/* Professional Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {segments.map((segment, index) => (
             <div 
               key={index} 
-              className="group relative"
-              style={{
-                animationDelay: `${index * 150}ms`
-              }}
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
             >
-              {/* Enhanced card */}
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-slate-200 h-full group-hover:-translate-y-3 transform">
-                
-                {/* Kompakter header with gradient */}
-                <div className={`bg-gradient-to-br ${segment.gradient} p-6 relative overflow-hidden`}>
-                  {/* Animated background elements */}
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full -mr-8 -mt-8 group-hover:scale-150 transition-transform duration-700"></div>
-                  <div className="absolute bottom-0 left-0 w-12 h-12 bg-white/5 rounded-full -ml-6 -mb-6 group-hover:scale-125 transition-transform duration-500"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-white mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {segment.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-yellow-100 transition-colors duration-300">
-                      {segment.title}
-                    </h3>
-                    <p className="text-white/90 text-sm font-medium">
-                      {segment.subtitle}
-                    </p>
-                  </div>
+              {/* Icon */}
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                <div className="text-orange-600">
+                  {segment.icon}
                 </div>
-
-                {/* Kompakter content */}
-                <div className="p-6">
-                  {/* Highlight badge */}
-                  <div className={`bg-gradient-to-r ${segment.bgGradient} rounded-lg px-3 py-1 inline-block mb-4 shadow-sm`}>
-                    <span className="text-slate-700 font-bold text-xs flex items-center">
-                      <Sparkles className="w-3 h-3 mr-1" />
-                      {segment.highlight}
-                    </span>
-                  </div>
-                  
-                  <p className="text-slate-600 leading-relaxed mb-6 group-hover:text-slate-700 transition-colors duration-300 text-sm">
-                    {segment.description}
-                  </p>
-
-                  {/* Enhanced CTA - Button Text geändert */}
-                  <button 
-                    className={`w-full bg-gradient-to-r ${segment.gradient} hover:scale-105 text-white py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group/btn`}
-                    onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
-                  >
-                    <span>Kostenlose Erstberatung</span>
-                    <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </button>
-                </div>
-
-                {/* Corner decoration */}
-                <div className={`absolute top-6 right-6 w-3 h-3 bg-gradient-to-br ${segment.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse`}></div>
               </div>
+              
+              {/* Content */}
+              <div className="mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                  {segment.title}
+                </h3>
+                <p className="text-sm text-gray-500 font-medium mb-3">
+                  {segment.subtitle}
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  {segment.description}
+                </p>
+              </div>
+
+              {/* Professional CTA */}
+              <button 
+                className="w-full bg-gray-50 hover:bg-gray-100 text-gray-900 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center space-x-2"
+                onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
+              >
+                <span>Beratung vereinbaren</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
           ))}
         </div>
