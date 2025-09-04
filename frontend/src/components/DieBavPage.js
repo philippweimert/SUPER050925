@@ -188,7 +188,7 @@ const DieBavPage = () => {
               </div>
 
               <p className="text-sm text-gray-500">
-                Informationen aus dem Geschäftsbetrieb des Versicherungsmaklers gemäß §93 HGB, keine Rechtsberatung, keine Steuerberatung
+                Informationen aus dem Geschäftsbetrieb gemäß §93 HGB
               </p>
             </div>
 
