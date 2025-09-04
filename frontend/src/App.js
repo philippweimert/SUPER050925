@@ -36,7 +36,6 @@ function App() {
           <Route path="/bkv/x" element={<BkvPageX />} />
           <Route path="/buv" element={<BuvPage />} />
           <Route path="/buv/x" element={<BuvPageX />} />
-          <Route path="/buv/y" element={<BuvPageY />} />
           <Route path="/kontakt" element={<ContactPage />} />
 
           <Route path="/aktuelles" element={<AktuellesPage />} />
