@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Button } from "./ui/button";
@@ -7,9 +7,19 @@ import { Shield, Users, TrendingUp, ArrowRight, Building2, AlertTriangle, CheckC
 
 const DieBavPage = () => {
   const [isChallengesExpanded, setIsChallengesExpanded] = useState(false);
+  const location = useLocation();
+  const [autoplay, setAutoplay] = useState(false);
+  const [showVideoOverlay, setShowVideoOverlay] = useState(false);
+  const [player, setPlayer] = useState(null);
   
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Check for autoplay parameter
+    const urlParams = new URLSearchParams(location.search);
+    if (urlParams.get('autoplay') === 'true') {
+      setAutoplay(true);
+    }
     
     // Check if URL has hash for challenges section
     if (window.location.hash === '#herausforderungen') {
@@ -24,7 +34,53 @@ const DieBavPage = () => {
         }, 100);
       }, 500);
     }
-  }, []);
+  }, [location]);
+
+  useEffect(() => {
+    // Load YouTube Player API if autoplay is enabled
+    if (autoplay) {
+      const loadYouTubeAPI = () => {
+        if (window.YT && window.YT.Player) {
+          initializePlayer();
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        script.async = true;
+        document.body.appendChild(script);
+
+        window.onYouTubeIframeAPIReady = () => {
+          initializePlayer();
+        };
+      };
+
+      const initializePlayer = () => {
+        setTimeout(() => {
+          try {
+            const ytPlayer = new window.YT.Player('youtube-player', {
+              videoId: 'Dw1XYzzPTkY',
+              events: {
+                onReady: (event) => {
+                  setPlayer(event.target);
+                  event.target.playVideo();
+                },
+                onStateChange: (event) => {
+                  if (event.data === window.YT.PlayerState.ENDED) {
+                    setShowVideoOverlay(true);
+                  }
+                }
+              }
+            });
+          } catch (error) {
+            console.error('Error initializing YouTube player:', error);
+          }
+        }, 500);
+      };
+
+      loadYouTubeAPI();
+    }
+  }, [autoplay]);
 
   const challenges = [
     {
