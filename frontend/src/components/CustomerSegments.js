@@ -75,41 +75,7 @@ const CustomerSegments = () => {
           ))}
         </div>
 
-        {/* Enhanced bottom section */}
-        <div className="text-center">
-          <div className="bg-gradient-to-br from-acencia via-acencia-light to-acencia rounded-3xl p-12 max-w-5xl mx-auto shadow-2xl relative overflow-hidden border border-white/10">
-            {/* Geometrische Hintergrundmuster - hell auf dunklem Hintergrund */}
-            <div className="absolute inset-0 opacity-[0.08]">
-              <svg className="absolute top-10 right-0 w-64 h-64 animate-pulse" viewBox="0 0 400 400" style={{animationDuration: '6s'}}>
-                <polygon points="200,60 300,120 300,180 200,240 100,180 100,120" 
-                         fill="none" stroke="white" strokeWidth="2"/>
-              </svg>
-              <svg className="absolute bottom-10 left-0 w-48 h-48 animate-bounce" viewBox="0 0 400 400" style={{animationDuration: '4s'}}>
-                <polygon points="200,80 280,140 280,200 200,260 120,200 120,140" 
-                         fill="none" stroke="#e3ebf2" strokeWidth="1"/>
-              </svg>
-            </div>
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">
-                Unsicher, welche Lösung für Sie die richtige ist?
-              </h3>
-              <p className="text-slate-300 mb-8 max-w-3xl mx-auto text-base leading-relaxed">
-                Lassen Sie uns gemeinsam die optimale bAV-Lösung für Ihr Unternehmen finden. 
-                In einem kostenlosen Beratungsgespräch analysieren wir Ihre Anforderungen.
-              </p>
-              <div className="flex justify-center">
-                <button 
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg text-lg group"
-                  onClick={() => window.location.href = '/kontakt'}
-                >
-                  <span>Sprechen Sie uns an!</span>
-                  <Sparkles className="w-5 h-5 ml-2 inline group-hover:animate-spin" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );
