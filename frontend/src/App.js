@@ -17,7 +17,6 @@ import BkvPage from "./components/BkvPage";
 import BkvPageX from "./components/BkvPageX";
 import BuvPage from "./components/BuvPage";
 import BuvPageX from "./components/BuvPageX";
-import BuvPageY from "./components/BuvPageY";
 import { Toaster } from "./components/ui/toaster";
 
 function App() {
