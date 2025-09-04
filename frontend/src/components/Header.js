@@ -23,39 +23,12 @@ const Header = () => {
     <header className="sticky top-0 w-full z-50 bg-white border-b border-gray-200 transition-all duration-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - links positioniert */}
+          {/* Logo - Clean & Professional */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center group smooth-slide py-2">
-              <svg viewBox="0 0 2000 340" className="h-12 w-auto transition-all duration-400 group-hover:scale-105" role="img" aria-label="ACENCIA – Wir machen bAV einfach">
-                {/* Icon: Three pill-frame rectangles */}
-                <g id="icon">
-                  <rect x="63" y="40" width="280" height="67" rx="18" ry="18" fill="none" stroke="#FFFFFF" strokeWidth="24"/>
-                  <rect x="63" y="139" width="280" height="67" rx="18" ry="18" fill="none" stroke="#FFFFFF" strokeWidth="24"/>
-                  <rect x="63" y="238" width="280" height="67" rx="18" ry="18" fill="none" stroke="#FFFFFF" strokeWidth="24"/>
-                </g>
-                
-                {/* Wordmark: ACENCIA */}
-                <g id="wordmark">
-                  <text x="390" y="30" className="fill-white group-hover:fill-orange-400 transition-all duration-400" style={{
-                    fontFamily: 'Tenor Sans, serif',
-                    fontSize: '235px',
-                    fontWeight: '400',
-                    letterSpacing: '0.12em',
-                    dominantBaseline: 'hanging'
-                  }}>ACENCIA</text>
-                </g>
-                
-                {/* Tagline: WIR MACHEN BAV EINFACH */}
-                <g id="tagline">
-                  <text x="390" y="255" className="fill-white group-hover:fill-orange-400 transition-all duration-400" style={{
-                    fontFamily: 'Tenor Sans, serif',
-                    fontSize: '65px',
-                    fontWeight: '400',
-                    letterSpacing: '0.25em',
-                    dominantBaseline: 'hanging'
-                  }}>WIR MACHEN BAV EINFACH</text>
-                </g>
-              </svg>
+            <Link to="/" className="flex items-center transition-opacity duration-200 hover:opacity-80">
+              <span className="text-2xl font-semibold text-gray-900 tracking-tight">
+                ACENCIA
+              </span>
             </Link>
           </div>
 
