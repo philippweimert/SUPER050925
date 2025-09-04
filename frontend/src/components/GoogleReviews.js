@@ -78,11 +78,6 @@ const GoogleReviews = () => {
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
         {/* Apple-like Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-full mb-6 border border-gray-100">
-            <Star className="w-4 h-4 text-orange-600 fill-orange-600" />
-            <span className="text-gray-700 font-medium text-sm tracking-wide">Google Bewertungen</span>
-          </div>
-          
           <h2 className="text-4xl md:text-5xl font-semibold mb-6 leading-tight text-gray-900 tracking-tight">
             Das sagen unsere <span className="text-orange-600">Kunden</span>
           </h2>
