@@ -101,44 +101,10 @@ const DieBavPage = () => {
               </h1>
               
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Automatisieren Sie Ihre betriebliche Altersvorsorge komplett
+                Umfassende Informationen zur betrieblichen Altersvorsorge
               </p>
 
-              {/* Benefits List */}
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700 text-base">Über 30 Jahre Erfahrung</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700 text-base">DSGVO konform & Rechtssicher</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700 text-base">Individuelle Lösungen für jede Unternehmensgröße</span>
-                </li>
-              </ul>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button 
-                  className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2"
-                  onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
-                >
-                  <span>Jetzt kostenfrei starten</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-                
-                <Link to="/die-bav?autoplay=true">
-                  <Button className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2">
-                    <Play className="w-4 h-4" />
-                    <span>Video ansehen</span>
-                  </Button>
-                </Link>
-              </div>
-
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 mb-8">
                 Informationen aus dem Geschäftsbetrieb des Versicherungsmaklers gemäß §93 HGB, keine Rechtsberatung, keine Steuerberatung
               </p>
             </div>
