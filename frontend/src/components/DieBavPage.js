@@ -6,6 +6,12 @@ import ThreeStepProcessSection from "./ThreeStepProcessSection";
 import Footer from "./Footer";
 import { Shield, Users, TrendingUp, ArrowRight, Scale, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
+import { Shield, Users, TrendingUp, ArrowRight, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
+
 const DieBavPage = () => {
   const [isChallengesExpanded, setIsChallengesExpanded] = useState(false);
   
@@ -70,189 +76,197 @@ const DieBavPage = () => {
       title: "Für Unternehmen",
       description: "Alles Wichtige über Pflichten, Herausforderungen, Chancen und Vorteile der bAV für Arbeitgeber.",
       icon: <Building2 className="w-6 h-6" />,
-      link: "/die-bav/x",
-      color: "from-blue-500 to-blue-600"
+      link: "/die-bav/x"
     },
     {
       title: "Für Arbeitnehmer", 
       description: "Erfahren Sie, wie Sie von steuerlichen Vorteilen profitieren und Ihre Altersvorsorge optimieren.",
       icon: <Users className="w-6 h-6" />,
-      link: "/die-bav/y",
-      color: "from-green-500 to-green-600"
+      link: "/die-bav/y"
     },
     {
       title: "Aktuelles",
       description: "Bleiben Sie informiert über die neuesten Entwicklungen, Gesetze und Trends in der bAV.",
       icon: <TrendingUp className="w-6 h-6" />,
-      link: "/die-bav/aktuelles",
-      color: "from-orange-500 to-orange-600"
+      link: "/die-bav/aktuelles"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-acencia">
+    <div className="min-h-screen bg-white">
       <Header />
       
-      {/* Doubled spacing from header to first section */}
-      <div className="pt-32">
-        <HeroSection />
-        <ThreeStepProcessSection />
-        
-        {/* Original die bAV content starts here */}
-        <div className="bg-gradient-to-b from-acencia via-acencia to-acencia-light py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-              
-              {/* Hero Section - kompakter */}
-              <div className="text-center mb-12">
-                <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                  die <span className="text-acencia-orange">bAV</span>
-                </h1>
-                <p className="text-xs text-slate-400 mb-6 max-w-2xl mx-auto">
-                  Informationen aus dem Geschäftsbetrieb des Versicherungsmaklers gemäß §93 HGB, keine Rechtsberatung, keine Steuerberatung
-                </p>
-                <p className="text-base text-slate-200 leading-relaxed max-w-3xl mx-auto">
-                  Umfassende Informationen zur betrieblichen Altersvorsorge
-                </p>
-              </div>
+      {/* Apple-like Container with proper spacing */}
+      <div className="pt-24">
+        {/* Apple-like Hero Section */}
+        <section className="bg-white py-16 md:py-20">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+            <div className="text-center mb-16">
+              <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">
+                die <span className="text-orange-600">bAV</span>
+              </h1>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-normal mb-4">
+                Umfassende Informationen zur betrieblichen Altersvorsorge
+              </p>
+              <p className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                Informationen aus dem Geschäftsbetrieb des Versicherungsmaklers gemäß §93 HGB, keine Rechtsberatung, keine Steuerberatung
+              </p>
+            </div>
+          </div>
+        </section>
 
-              {/* Definition der betrieblichen Altersvorsorge - jetzt volle Breite */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 mb-12">
-                <div className="flex items-center mb-4">
-                  <Shield className="w-6 h-6 text-acencia-orange mr-2" />
-                  <h2 className="text-lg font-semibold text-white">
-                    Was ist betriebliche Altersvorsorge?
-                  </h2>
+        {/* Apple-like Definition Section */}
+        <section className="bg-gray-50 py-16 md:py-20">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-xl p-8 md:p-12 border border-gray-100 shadow-sm">
+              <div className="flex items-center mb-8">
+                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mr-4">
+                  <Shield className="w-6 h-6 text-orange-600" />
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div>
-                    <p className="text-slate-200 leading-relaxed text-sm mb-3">
-                      Die betriebliche Altersvorsorge (bAV) ist eine Form der privaten Altersvorsorge, die über den Arbeitgeber organisiert wird. 
-                      Sie ergänzt die gesetzliche Rente und bietet Arbeitnehmern die Möglichkeit, zusätzliche Rentenansprüche aufzubauen.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-slate-200 leading-relaxed text-sm">
-                      Seit 2002 haben alle Arbeitnehmer einen Rechtsanspruch auf betriebliche Altersvorsorge durch Entgeltumwandlung. 
-                      Dabei wird ein Teil des Bruttogehalts für die Altersvorsorge verwendet, wodurch sich die Steuer- und Sozialabgabenlast reduziert.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Herausforderungen Ausklapp-Element */}
-              <div id="herausforderungen" className="mb-12">
-                <div 
-                  className="cursor-pointer bg-gradient-to-br from-red-600/20 to-red-700/20 rounded-2xl p-6 border border-red-500/30 hover:border-red-400/50 transition-all duration-300"
-                  onClick={() => setIsChallengesExpanded(!isChallengesExpanded)}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center">
-                        <AlertTriangle className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-1">
-                          bAV-Verwaltung ist komplex, zeitaufwendig und fehleranfällig
-                        </h3>
-                        <p className="text-slate-300 text-sm">
-                          Klicken Sie hier, um die Herausforderungen und unsere Lösungen zu sehen
-                        </p>
-                      </div>
-                    </div>
-                    <div className="text-white">
-                      {isChallengesExpanded ? (
-                        <ChevronUp className="w-6 h-6" />
-                      ) : (
-                        <ChevronDown className="w-6 h-6" />
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Ausklappbarer Inhalt */}
-                <div className={`transition-all duration-500 overflow-hidden ${
-                  isChallengesExpanded ? 'max-h-[2000px] opacity-100 mt-6' : 'max-h-0 opacity-0'
-                }`}>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Herausforderungen */}
-                    <div className="bg-gradient-to-br from-red-600/10 to-red-700/10 rounded-xl p-6 border border-red-500/20">
-                      <h4 className="text-lg font-bold text-white mb-4 flex items-center">
-                        <AlertTriangle className="w-5 h-5 text-red-400 mr-2" />
-                        Herausforderungen
-                      </h4>
-                      <div className="space-y-4">
-                        {challenges.map((challenge, index) => (
-                          <div key={index} className="flex items-start space-x-3">
-                            <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                              <h5 className="text-white font-semibold text-sm mb-1">{challenge.title}</h5>
-                              <p className="text-slate-300 text-xs">{challenge.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Lösungen */}
-                    <div className="bg-gradient-to-br from-green-600/10 to-green-700/10 rounded-xl p-6 border border-green-500/20">
-                      <h4 className="text-lg font-bold text-white mb-4 flex items-center">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2" />
-                        Unsere Lösungen
-                      </h4>
-                      <div className="space-y-4">
-                        {solutions.map((solution, index) => (
-                          <div key={index} className="flex items-start space-x-3">
-                            <CheckCircle className="w-4 h-4 text-green-400 mt-1 flex-shrink-0" />
-                            <div>
-                              <h5 className="text-white font-semibold text-sm mb-1">{solution.title}</h5>
-                              <p className="text-slate-300 text-xs">{solution.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mehr erfahren Boxen - kompakter */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-white text-center mb-8">
-                  Mehr erfahren
+                <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">
+                  Was ist betriebliche Altersvorsorge?
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {moreInfoBoxes.map((box, index) => (
-                    <Link 
-                      key={index}
-                      to={box.link}
-                      className="group block"
-                    >
-                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-xl h-full">
-                        <div className={`w-10 h-10 bg-gradient-to-r ${box.color} rounded-lg flex items-center justify-center mb-3 text-white group-hover:scale-110 transition-transform duration-300`}>
-                          {box.icon}
-                        </div>
-                        
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-acencia-orange transition-colors duration-300">
-                          {box.title}
-                        </h3>
-                        
-                        <p className="text-slate-200 leading-relaxed mb-3 text-sm">
-                          {box.description}
-                        </p>
-                        
-                        <div className="flex items-center text-acencia-orange group-hover:text-orange-300 transition-colors duration-300">
-                          <span className="text-xs font-medium">Mehr erfahren</span>
-                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                  <p className="text-gray-700 leading-relaxed text-base mb-4">
+                    Die betriebliche Altersvorsorge (bAV) ist eine Form der privaten Altersvorsorge, die über den Arbeitgeber organisiert wird. 
+                    Sie ergänzt die gesetzliche Rente und bietet Arbeitnehmern die Möglichkeit, zusätzliche Rentenansprüche aufzubauen.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-gray-700 leading-relaxed text-base">
+                    Seit 2002 haben alle Arbeitnehmer einen Rechtsanspruch auf betriebliche Altersvorsorge durch Entgeltumwandlung. 
+                    Dabei wird ein Teil des Bruttogehalts für die Altersvorsorge verwendet, wodurch sich die Steuer- und Sozialabgabenlast reduziert.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Apple-like Challenges Section */}
+        <section className="bg-white py-16 md:py-20">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+            <div id="herausforderungen" className="mb-8">
+              <div 
+                className="cursor-pointer bg-white border border-gray-200 rounded-xl p-8 hover:border-gray-300 hover:shadow-sm transition-all duration-150 ease-out"
+                onClick={() => setIsChallengesExpanded(!isChallengesExpanded)}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-red-50 to-red-100 rounded-xl flex items-center justify-center">
+                      <AlertTriangle className="w-7 h-7 text-red-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 tracking-tight">
+                        bAV-Verwaltung ist komplex, zeitaufwendig und fehleranfällig
+                      </h3>
+                      <p className="text-gray-600 text-base">
+                        Klicken Sie hier, um die Herausforderungen und unsere Lösungen zu sehen
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-gray-400">
+                    {isChallengesExpanded ? (
+                      <ChevronUp className="w-6 h-6" />
+                    ) : (
+                      <ChevronDown className="w-6 h-6" />
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Expandable Content */}
+              <div className={`transition-all duration-300 overflow-hidden ${
+                isChallengesExpanded ? 'max-h-[2000px] opacity-100 mt-8' : 'max-h-0 opacity-0'
+              }`}>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Challenges */}
+                  <div className="bg-red-50 rounded-xl p-8 border border-red-100">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                      <AlertTriangle className="w-5 h-5 text-red-600 mr-3" />
+                      Herausforderungen
+                    </h4>
+                    <div className="space-y-6">
+                      {challenges.map((challenge, index) => (
+                        <div key={index} className="flex items-start space-x-4">
+                          <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <h5 className="text-gray-900 font-semibold text-base mb-2">{challenge.title}</h5>
+                            <p className="text-gray-600 text-sm leading-relaxed">{challenge.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Solutions */}
+                  <div className="bg-green-50 rounded-xl p-8 border border-green-100">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
+                      Unsere Lösungen
+                    </h4>
+                    <div className="space-y-6">
+                      {solutions.map((solution, index) => (
+                        <div key={index} className="flex items-start space-x-4">
+                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <h5 className="text-gray-900 font-semibold text-base mb-2">{solution.title}</h5>
+                            <p className="text-gray-600 text-sm leading-relaxed">{solution.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Apple-like More Info Section */}
+        <section className="bg-gray-50 py-16 md:py-20">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 tracking-tight">
+                Mehr erfahren
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {moreInfoBoxes.map((box, index) => (
+                <Link 
+                  key={index}
+                  to={box.link}
+                  className="group block"
+                >
+                  <div className="bg-white rounded-xl p-8 border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all duration-150 ease-out h-full">
+                    <div className="w-14 h-14 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:from-orange-100 group-hover:to-orange-200 transition-all duration-150">
+                      <div className="text-orange-600 group-hover:text-orange-700 transition-colors duration-150">
+                        {box.icon}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-150">
+                      {box.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed mb-6 text-base">
+                      {box.description}
+                    </p>
+                    
+                    <div className="flex items-center text-orange-600 group-hover:text-orange-700 transition-colors duration-150">
+                      <span className="text-sm font-medium">Mehr erfahren</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-150" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
         
         <Footer />
       </div>
