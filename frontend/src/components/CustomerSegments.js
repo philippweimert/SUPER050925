@@ -4,50 +4,28 @@ import { Rocket, Building, Building2, Users, ArrowRight, Sparkles } from "lucide
 const CustomerSegments = () => {
   const segments = [
     {
-      icon: <Rocket className="w-8 h-8" />,
+      icon: <Rocket className="w-6 h-6" />,
       title: "Start-up",
       subtitle: "5-50 Mitarbeiter",
-      description: "Flexible und skalierbare bAV-Lösungen für junge Unternehmen mit schnellem Wachstum",
-      highlight: "Flexibel & Skalierbar",
-      color: "blue",
-      gradient: "from-blue-500 to-cyan-500",
-      bgGradient: "from-blue-50 to-cyan-50"
+      description: "Flexible und skalierbare bAV-Lösungen für junge Unternehmen mit schnellem Wachstum"
     },
     {
-      icon: <Building className="w-8 h-8" />,
+      icon: <Building className="w-6 h-6" />,
       title: "Mittelstand",
       subtitle: "50-1000 Mitarbeiter",
-      description: "Bewährte Konzepte für etablierte mittelständische Betriebe mit komplexeren Anforderungen",
-      highlight: "Bewährt & Effizient",
-      color: "orange",
-      gradient: "from-orange-500 to-amber-500",
-      bgGradient: "from-orange-50 to-amber-50"
+      description: "Bewährte Konzepte für etablierte mittelständische Betriebe mit komplexeren Anforderungen"
     },
     {
-      icon: <Building2 className="w-8 h-8" />,
+      icon: <Building2 className="w-6 h-6" />,
       title: "Konzern",
       subtitle: "1000+ Mitarbeiter",
-      description: "Komplexe Enterprise-Lösungen für große Unternehmensstrukturen mit höchsten Anforderungen",
-      highlight: "Enterprise & Komplex",
-      color: "purple",
-      gradient: "from-purple-500 to-violet-500",
-      bgGradient: "from-purple-50 to-violet-50"
+      description: "Komplexe Enterprise-Lösungen für große Unternehmensstrukturen mit höchsten Anforderungen"
     }
   ];
 
   return (
-    <section className="bg-gradient-to-b from-acencia via-acencia-light to-acencia py-8 relative overflow-hidden">
-      {/* Simplified background elements */}
-      <div className="absolute inset-0 opacity-[0.05]">
-        <svg className="absolute top-20 right-20 w-80 h-80 animate-pulse" viewBox="0 0 400 400">
-          <polygon points="200,50 350,150 350,250 200,350 50,250 50,150" 
-                   fill="none" stroke="white" strokeWidth="2"/>
-        </svg>
-        <svg className="absolute bottom-20 left-20 w-64 h-64 animate-bounce" viewBox="0 0 300 300" style={{animationDuration: '4s'}}>
-          <polygon points="150,30 270,120 270,180 150,270 30,180 30,120" 
-                   fill="none" stroke="white" strokeWidth="1"/>
-        </svg>
-      </div>
+    <section className="bg-gray-50 py-20 lg:py-24">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Sehr kompakte section header */}
