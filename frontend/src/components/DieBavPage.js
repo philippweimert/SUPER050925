@@ -2,12 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Shield, Users, TrendingUp, ArrowRight, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
-
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
 import { Button } from "./ui/button";
 import { Shield, Users, TrendingUp, ArrowRight, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Play } from "lucide-react";
 
@@ -374,7 +368,6 @@ const DieBavPage = () => {
       <Footer />
     </div>
   );
-};
 };
 
 export default DieBavPage;
