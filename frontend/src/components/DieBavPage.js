@@ -241,10 +241,11 @@ const DieBavPage = () => {
                 ) : (
                   <div className="flex items-center justify-center h-full">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Play className="w-8 h-8 text-gray-500" />
+                      <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Play className="w-8 h-8 text-orange-600" />
                       </div>
-                      <p className="text-gray-600 text-sm">Video Platzhalter</p>
+                      <h3 className="text-gray-900 font-medium text-base mb-2">Betriebliche Altersvorsorge einfach einrichten</h3>
+                      <p className="text-gray-600 text-sm">Sehen Sie, wie ACENCIA Ihre bAV digitalisiert</p>
                     </div>
                   </div>
                 )}
