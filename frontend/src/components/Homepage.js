@@ -57,66 +57,60 @@ const Homepage = () => {
       <div className="bg-white">
         <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-24">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
               {/* Left Content - Hero Text */}
-              <div className="text-left">
-                {/* Main Headline */}
-                <h1 className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
-                  <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent animate-gradient-x">Digital.</span>{" "}
-                  <span className="text-white">Einfach.</span>{" "}
-                  <span className="text-slate-200">Modern.</span>
+              <div className="lg:col-span-7">
+                {/* Main Headline - Apple Style */}
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
+                  Digital. Einfach.{" "}
+                  <span className="text-orange-500">Modern.</span>
                 </h1>
 
-                {/* Subtitle */}
-                <p className="text-xl text-slate-300 mb-8 max-w-lg leading-relaxed">
+                {/* Subtitle - Professional */}
+                <p className="text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
                   Automatisieren Sie Ihre betriebliche Altersvorsorge komplett
                 </p>
 
-                {/* Interactive Benefits */}
-                <div className="space-y-3 mb-10">
+                {/* Clean Benefits List */}
+                <div className="space-y-4 mb-10">
                   {benefits.map((benefit, index) => (
                     <div 
                       key={index} 
-                      className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
-                      style={{animationDelay: `${index * 150}ms`}}
+                      className="flex items-center space-x-3"
                     >
-                      <div className="w-8 h-8 bg-orange-500/20 backdrop-blur-sm border border-orange-400/50 rounded-full flex items-center justify-center group-hover:rotate-12 group-hover:bg-orange-400/30 group-hover:border-orange-400/70 transition-all duration-300 flex-shrink-0">
-                        <div className="text-orange-400 group-hover:text-orange-300 group-hover:scale-110 transition-all duration-300">
+                      <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="text-orange-600">
                           {benefit.icon}
                         </div>
                       </div>
-                      <span className="text-slate-200 font-medium group-hover:text-white transition-colors duration-300">
+                      <span className="text-gray-700 font-medium">
                         {benefit.text}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Enhanced CTA Buttons */}
+                {/* Professional CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
-                    className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg flex items-center justify-center space-x-2 relative overflow-hidden"
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium text-base transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 flex items-center justify-center space-x-2"
                   >
-                    {/* Subtle shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                    <span className="relative z-10">Jetzt kostenfrei starten</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
+                    <span>Jetzt kostenfrei starten</span>
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                   
                   <Link 
                     to="/die-bav?autoplay=true"
-                    className="group bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                    className="border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-6 py-3 rounded-lg font-medium text-base transition-colors duration-200 flex items-center justify-center space-x-2"
                   >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                     <span>Video ansehen</span>
                   </Link>
                 </div>
-
-
               </div>
 
               {/* Right Content - Solutions + Onboarding (shifted down for video placeholder) */}
