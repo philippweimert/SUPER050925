@@ -153,14 +153,41 @@ const DieBavPage = () => {
             {/* Left Column - 7/12 */}
             <div className="lg:col-span-7">
               <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
-                die <span className="text-orange-600">bAV</span>
+                Wir machen <span className="text-orange-600">bAV einfach!</span>
               </h1>
               
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Umfassende Informationen zur betrieblichen Altersvorsorge
+                Entlasten Sie Ihr HR-Team mit unserer vollautomatisierten, digitalen All-in-One-Plattform für die betriebliche Altersvorsorge.
               </p>
 
-              <p className="text-sm text-gray-500 mb-8">
+              {/* Benefits List */}
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span className="text-gray-700 text-base">100% digitale Verwaltung</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span className="text-gray-700 text-base">Vollautomatisierte Prozesse</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span className="text-gray-700 text-base">DSGVO-konform & rechtssicher</span>
+                </li>
+              </ul>
+
+              {/* CTA Button */}
+              <div className="mb-8">
+                <Button 
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2"
+                  onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
+                >
+                  <span>Jetzt starten</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </div>
+
+              <p className="text-sm text-gray-500">
                 Informationen aus dem Geschäftsbetrieb des Versicherungsmaklers gemäß §93 HGB, keine Rechtsberatung, keine Steuerberatung
               </p>
             </div>
