@@ -1,5 +1,4 @@
-import React from "react";
-import { Rocket, Building, Building2, Users, ArrowRight, Sparkles } from "lucide-react";
+import { Rocket, Building, Building2, ArrowRight } from "lucide-react";
 
 const CustomerSegments = () => {
   const segments = [
