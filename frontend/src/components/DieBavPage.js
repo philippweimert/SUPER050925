@@ -251,51 +251,8 @@ const DieBavPage = () => {
                 )}
               </div>
 
-              {/* Solutions Cards */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Unsere Lösungen</h3>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
-                  <div className="bg-white border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors duration-150">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Building2 className="w-4 h-4 text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">bAV</p>
-                        <p className="text-xs text-gray-500">Betriebliche Altersvorsorge</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors duration-150">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Shield className="w-4 h-4 text-green-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">bKV</p>
-                        <p className="text-xs text-gray-500">Betriebliche Krankenversicherung</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors duration-150">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Users className="w-4 h-4 text-purple-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">bUV</p>
-                        <p className="text-xs text-gray-500">Betriebliche Unfallversicherung</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* Onboarding Card */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-6">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                 <div className="flex items-center space-x-2 mb-2">
                   <CheckCircle className="w-4 h-4 text-green-600" />
                   <span className="text-green-800 font-medium text-sm">0,00 € Onboarding</span>
