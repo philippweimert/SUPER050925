@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Building2, AlertTriangle, Target, TrendingUp, CheckCircle, Users, Shield, FileText, Lightbulb, Award, DollarSign, Heart } from "lucide-react";
+import { Button } from "./ui/button";
+import { Building2, AlertTriangle, Target, TrendingUp, CheckCircle, Users, Shield, ArrowRight } from "lucide-react";
 
 const DieBavPageX = () => {
   useEffect(() => {
@@ -12,8 +14,7 @@ const DieBavPageX = () => {
     {
       id: "pflichten",
       title: "Pflichten",
-      icon: <Shield className="w-8 h-8" />,
-      color: "from-red-500 to-red-600",
+      icon: <Shield className="w-6 h-6" />,
       items: [
         {
           title: "Gesetzliche Verpflichtung zur Entgeltumwandlung (§ 1a BetrAVG)",
@@ -36,8 +37,7 @@ const DieBavPageX = () => {
     {
       id: "herausforderungen",
       title: "Herausforderungen",
-      icon: <AlertTriangle className="w-8 h-8" />,
-      color: "from-orange-500 to-orange-600",
+      icon: <AlertTriangle className="w-6 h-6" />,
       items: [
         {
           title: "Komplexität der Produktlandschaft und Anbieterwahl",
@@ -60,8 +60,7 @@ const DieBavPageX = () => {
     {
       id: "chancen",
       title: "Chancen",
-      icon: <Target className="w-8 h-8" />,
-      color: "from-green-500 to-green-600",
+      icon: <Target className="w-6 h-6" />,
       items: [
         {
           title: "Mitarbeiterbindung und -gewinnung durch attraktive Zusatzleistungen",
@@ -84,8 +83,7 @@ const DieBavPageX = () => {
     {
       id: "vorteile",
       title: "Vorteile",
-      icon: <TrendingUp className="w-8 h-8" />,
-      color: "from-blue-500 to-blue-600",
+      icon: <TrendingUp className="w-6 h-6" />,
       items: [
         {
           title: "Geringere Fluktuation und höhere Zufriedenheit im Team",
@@ -108,112 +106,131 @@ const DieBavPageX = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-acencia via-acencia to-acencia-light">
+    <div className="min-h-screen bg-white">
       <Header />
       
-      {/* Doubled spacing from header */}
-      <main className="pt-56">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Hero Section */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-6 py-3 bg-acencia-orange rounded-full text-white text-sm font-medium mb-8">
-                <Building2 className="w-5 h-5 mr-2" />
-                Für Unternehmen
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-8">
-                Betriebliche Altersvorsorge für <span className="text-acencia-orange">Unternehmen</span>
-              </h1>
-              <p className="text-lg text-slate-200 leading-relaxed max-w-4xl mx-auto">
-                Warum bAV heute wichtiger ist denn je
-              </p>
-            </div>
+      {/* Hero Section - Same structure as main pages */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
+              bAV für <span className="text-orange-600">Unternehmen</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-4 leading-relaxed">
+              Warum bAV heute wichtiger ist denn je
+            </p>
+            <p className="text-sm text-gray-500">
+              Informationen aus dem Geschäftsbetrieb gemäß §93 HGB
+            </p>
+          </div>
+        </div>
+      </section>
 
-            {/* Einleitung */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-16">
-              <div className="flex items-center mb-6">
-                <Users className="w-8 h-8 text-acencia-orange mr-3" />
-                <h2 className="text-2xl font-semibold text-white">
-                  Bedeutung der bAV im Wettbewerb um Fachkräfte
-                </h2>
+      {/* Introduction Section */}
+      <section className="bg-gray-50 py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="bg-white rounded-lg p-8 border border-gray-200">
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                <Users className="w-6 h-6 text-orange-600" />
               </div>
-              <p className="text-slate-200 leading-relaxed mb-4">
+              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
+                Bedeutung der bAV im Wettbewerb um Fachkräfte
+              </h2>
+            </div>
+            
+            <div className="space-y-4">
+              <p className="text-gray-700 leading-relaxed">
                 In Zeiten des demografischen Wandels und des Fachkräftemangels wird die betriebliche Altersvorsorge zu einem 
                 entscheidenden Faktor im Wettbewerb um qualifizierte Mitarbeitende. Unternehmen, die eine durchdachte bAV-Strategie 
                 implementieren, verschaffen sich nicht nur einen Wettbewerbsvorteil, sondern übernehmen auch gesellschaftliche Verantwortung.
               </p>
-              <p className="text-slate-200 leading-relaxed">
-                <strong className="text-white">Gesetzliche Rahmenbedingungen:</strong> Die Berücksichtigung aktueller Gesetze und Verordnungen 
+              <p className="text-gray-700 leading-relaxed">
+                <strong className="text-gray-900">Gesetzliche Rahmenbedingungen:</strong> Die Berücksichtigung aktueller Gesetze und Verordnungen 
                 ist nicht nur eine rechtliche Notwendigkeit, sondern auch ein Zeichen für verantwortungsvolle Unternehmensführung. 
                 Eine professionell gestaltete bAV stärkt das Vertrauen der Mitarbeitenden und das Image des Unternehmens.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Sections */}
-            <div className="space-y-16">
-              {sections.map((section, sectionIndex) => (
-                <div key={section.id} className="relative">
-                  {/* Section Header */}
-                  <div className="flex items-center mb-8">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${section.color} rounded-2xl flex items-center justify-center text-white mr-4 shadow-lg`}>
-                      {section.icon}
-                    </div>
-                    <div>
-                      <h2 className="text-3xl font-bold text-white mb-2">
-                        {sectionIndex + 1}. {section.title}
-                      </h2>
-                    </div>
-                  </div>
+      {/* Sections */}
+      {sections.map((section, sectionIndex) => (
+        <section 
+          key={section.id} 
+          className={sectionIndex % 2 === 0 ? "bg-white py-16 md:py-20" : "bg-gray-50 py-16 md:py-20"}
+        >
+          <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+            {/* Section Header */}
+            <div className="flex items-center mb-12">
+              <div className="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center mr-6">
+                <div className="text-orange-600">
+                  {section.icon}
+                </div>
+              </div>
+              <div>
+                <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
+                  {sectionIndex + 1}. {section.title}
+                </h2>
+              </div>
+            </div>
 
-                  {/* Section Items */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {section.items.map((item, itemIndex) => (
-                      <div 
-                        key={itemIndex}
-                        className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 group"
-                      >
-                        <div className="flex items-start space-x-4">
-                          <div className="flex-shrink-0">
-                            <CheckCircle className="w-6 h-6 text-acencia-orange mt-1" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-acencia-orange transition-colors duration-300">
-                              {item.title}
-                            </h3>
-                            <p className="text-slate-200 leading-relaxed text-sm">
-                              {item.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+            {/* Section Items */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {section.items.map((item, itemIndex) => (
+                <div 
+                  key={itemIndex}
+                  className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-all duration-150"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      ))}
 
-            {/* Call to Action */}
-            <div className="mt-16 bg-gradient-to-r from-acencia-orange to-orange-600 rounded-2xl p-8 text-center">
-              <h2 className="text-2xl font-bold text-white mb-4">
-                Bereit für den nächsten Schritt?
-              </h2>
-              <p className="text-white/90 mb-6 leading-relaxed">
-                Lassen Sie uns gemeinsam die optimale bAV-Lösung für Ihr Unternehmen entwickeln. 
-                Unsere Experten beraten Sie individuell und unverbindlich.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-acencia-orange px-8 py-3 rounded-xl font-semibold hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg">
-                  Beratungstermin vereinbaren
-                </button>
-                <button className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300">
-                  Mehr erfahren
-                </button>
-              </div>
+      {/* Call to Action */}
+      <section className="bg-orange-50 py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="bg-white rounded-lg p-8 border border-orange-200 text-center">
+            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
+              Bereit für den nächsten Schritt?
+            </h2>
+            <p className="text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto">
+              Lassen Sie uns gemeinsam die optimale bAV-Lösung für Ihr Unternehmen entwickeln. 
+              Unsere Experten beraten Sie individuell und unverbindlich.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2"
+                onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
+              >
+                <span>Beratungstermin vereinbaren</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+              <Link to="/die-bav">
+                <Button className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-lg font-medium transition-colors duration-150">
+                  Zurück zur Übersicht
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
-      </main>
+      </section>
       
       <Footer />
     </div>
