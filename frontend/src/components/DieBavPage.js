@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
-import HeroSection from "./HeroSection";
-import ThreeStepProcessSection from "./ThreeStepProcessSection";
 import Footer from "./Footer";
-import { Shield, Users, TrendingUp, ArrowRight, Scale, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { Shield, Users, TrendingUp, ArrowRight, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
