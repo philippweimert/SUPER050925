@@ -177,16 +177,6 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-bounce">
-            <div className="flex flex-col items-center text-slate-400 hover:text-orange-400 transition-colors duration-300 cursor-pointer">
-              <div className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center mb-2">
-                <div className="w-1 h-3 bg-slate-400 rounded-full mt-2 animate-pulse"></div>
-              </div>
-              <span className="text-xs font-medium">Mehr erfahren</span>
-            </div>
-          </div>
         </section>
         
         {/* Unsere Kunden vertrauen uns Sektion */}
