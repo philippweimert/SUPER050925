@@ -15,7 +15,6 @@ import DieBavPageX from "./components/DieBavPageX";
 import DieBavPageY from "./components/DieBavPageY";
 import BkvPage from "./components/BkvPage";
 import BkvPageX from "./components/BkvPageX";
-import BkvPageY from "./components/BkvPageY";
 import BuvPage from "./components/BuvPage";
 import BuvPageX from "./components/BuvPageX";
 import BuvPageY from "./components/BuvPageY";
