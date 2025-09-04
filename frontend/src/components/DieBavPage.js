@@ -167,12 +167,60 @@ const DieBavPage = () => {
 
             {/* Right Column - 5/12 */}
             <div className="lg:col-span-5">
-              {/* Video Placeholder */}
-              <div className="bg-gray-100 rounded-lg p-8 mb-8 text-center">
-                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Play className="w-8 h-8 text-gray-500" />
-                </div>
-                <p className="text-gray-600 text-sm">Video Platzhalter</p>
+              {/* Video Player */}
+              <div className="bg-gray-100 rounded-lg mb-8 relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                {autoplay ? (
+                  <div className="relative w-full h-full">
+                    <iframe
+                      id="youtube-player"
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/Dw1XYzzPTkY?enablejsapi=1&autoplay=1&controls=1&rel=0`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0"
+                    ></iframe>
+                    
+                    {/* Video End Overlay */}
+                    {showVideoOverlay && (
+                      <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center z-10">
+                        <div className="bg-white rounded-xl p-8 text-center max-w-sm mx-4">
+                          <h3 className="text-xl font-semibold text-gray-900 mb-4">Video beendet</h3>
+                          <div className="space-y-3">
+                            <button
+                              onClick={() => {
+                                if (player) {
+                                  player.seekTo(0);
+                                  player.playVideo();
+                                  setShowVideoOverlay(false);
+                                }
+                              }}
+                              className="w-full bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-150"
+                            >
+                              Erneut ansehen
+                            </button>
+                            <Link 
+                              to="/bav-rechtliche-grundlagen"
+                              className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg font-medium transition-colors duration-150"
+                            >
+                              Gesetzliche Pflichten - bAV
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Play className="w-8 h-8 text-gray-500" />
+                      </div>
+                      <p className="text-gray-600 text-sm">Video Platzhalter</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Solutions Cards */}
