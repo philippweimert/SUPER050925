@@ -172,152 +172,61 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Enhanced Mobile menu button */}
+          {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-orange-400 hover:bg-white/10 p-3 rounded-xl transition-all duration-300"
+              className="text-gray-700 hover:text-gray-900 p-2 transition-colors duration-200"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
 
-        {/* Enhanced Mobile Navigation */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? 'max-h-[40rem] opacity-100' : 'max-h-0 opacity-0'
+        {/* Mobile Navigation - Clean Overlay */}
+        <div className={`md:hidden transition-all duration-200 overflow-hidden ${
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="px-2 pt-2 pb-6 space-y-1 bg-acencia-light/95 backdrop-blur-lg rounded-2xl mt-4 border border-acencia-light/50 shadow-xl">
-            {/* bAV with submenu in mobile */}
-            <div className="space-y-1">
-              <Link
-                to="/die-bav"
-                className="block px-6 py-3 text-white hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300 font-medium flex items-center"
-                onClick={() => setIsMenuOpen(false)}
-                title="betriebliche Altersversorgung"
-              >
-                <span className="text-lg font-semibold">bAV</span>
-              </Link>
-              <div className="pl-4 space-y-1">
-                <Link
-                  to="/die-bav/x"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Für Unternehmen
-                </Link>
-                <Link
-                  to="/die-bav/y"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Für Arbeitnehmer
-                </Link>
-                <Link
-                  to="/die-bav/aktuelles"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Aktuelles
-                </Link>
-              </div>
-            </div>
+          <div className="px-6 py-4 space-y-1 bg-white border-t border-gray-200">
+            <Link
+              to="/die-bav"
+              className="block py-3 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors duration-150"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              bAV
+            </Link>
+            <Link
+              to="/bkv"
+              className="block py-3 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors duration-150"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              bKV
+            </Link>
+            <Link
+              to="/buv"
+              className="block py-3 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors duration-150"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              bUV
+            </Link>
+            <Link
+              to="/ueber-uns"
+              className="block py-3 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors duration-150"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Über uns
+            </Link>
             
-            {/* bKV with submenu in mobile */}
-            <div className="space-y-1">
-              <Link
-                to="/bkv"
-                className="block px-6 py-3 text-white hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300 font-medium flex items-center"
-                onClick={() => setIsMenuOpen(false)}
-                title="betriebliche Krankenversicherung"
-              >
-                <span className="text-lg font-semibold">bKV</span>
-              </Link>
-              <div className="pl-4 space-y-1">
-                <Link
-                  to="/bkv/x"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  bKV Option X
-                </Link>
-                <Link
-                  to="/bkv/y"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  bKV Option Y
-                </Link>
-              </div>
-            </div>
-            
-            {/* bUV with submenu in mobile */}
-            <div className="space-y-1">
-              <Link
-                to="/buv"
-                className="block px-6 py-3 text-white hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300 font-medium flex items-center"
-                onClick={() => setIsMenuOpen(false)}
-                title="betriebliche Unfallversicherung"
-              >
-                <span className="text-lg font-semibold">bUV</span>
-              </Link>
-              <div className="pl-4 space-y-1">
-                <Link
-                  to="/buv/x"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  bUV Option X
-                </Link>
-                <Link
-                  to="/buv/y"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  bUV Option Y
-                </Link>
-              </div>
-            </div>
-            
-            {/* über uns with submenu in mobile */}
-            <div className="space-y-1">
-              <Link
-                to="/ueber-uns"
-                className="block px-6 py-3 text-white hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                über uns
-              </Link>
-              <div className="pl-4 space-y-1">
-                <Link
-                  to="/ueber-uns/service-team"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Service-Team
-                </Link>
-                <Link
-                  to="/kontakt"
-                  className="block px-6 py-2 text-sm text-slate-300 hover:text-orange-400 hover:bg-white/5 rounded-xl transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Kontakt
-                </Link>
-              </div>
-            </div>
-            
-            <div className="pt-2">
-              <Button 
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold rounded-xl py-3 transition-all duration-300"
+            <div className="pt-4">
+              <button 
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg text-sm font-medium transition-colors duration-200"
                 onClick={() => {
                   window.open('https://www.smartcloudservices.de/acencia/login/login.do', '_blank');
                   setIsMenuOpen(false);
                 }}
               >
                 Login Portal
-              </Button>
+              </button>
             </div>
           </div>
         </div>
