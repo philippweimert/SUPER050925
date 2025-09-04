@@ -4,12 +4,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Shield, Users, TrendingUp, ArrowRight, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
-import { Shield, Users, TrendingUp, ArrowRight, Building2, AlertTriangle, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
-
 const DieBavPage = () => {
   const [isChallengesExpanded, setIsChallengesExpanded] = useState(false);
   
