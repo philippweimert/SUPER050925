@@ -53,31 +53,10 @@ const Homepage = () => {
     <div className="min-h-screen bg-gradient-to-b from-acencia via-acencia to-acencia-light">
       <Header />
       
-      {/* Moderne Interaktive Hero Section */}
-      <div className="pt-8">
-        <section className="min-h-[85vh] flex items-center relative overflow-hidden">
-          {/* Erweiterte animierte Background Patterns */}
-          <div className="absolute inset-0">
-            {/* Floating animated shapes */}
-            <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-orange-500/10 to-orange-600/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-bounce" style={{animationDuration: '6s'}}></div>
-            
-            {/* Animated geometric patterns */}
-            <div className="absolute inset-0 opacity-[0.08]">
-              <svg className="absolute top-32 right-10 w-80 h-80 animate-spin" viewBox="0 0 400 400" style={{animationDuration: '20s'}}>
-                <polygon points="200,40 350,120 350,280 200,360 50,280 50,120" 
-                         fill="none" stroke="white" strokeWidth="1"/>
-                <polygon points="150,80 250,80 300,150 250,220 150,220 100,150" 
-                         fill="none" stroke="white" strokeWidth="0.5"/>
-              </svg>
-              <svg className="absolute bottom-32 left-10 w-64 h-64 animate-pulse" viewBox="0 0 300 300">
-                <polygon points="150,20 270,80 270,180 150,240 30,180 30,80" 
-                         fill="none" stroke="white" strokeWidth="1"/>
-              </svg>
-            </div>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Professional Hero Section */}
+      <div className="bg-white">
+        <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-24">
+          <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               
               {/* Left Content - Hero Text */}
