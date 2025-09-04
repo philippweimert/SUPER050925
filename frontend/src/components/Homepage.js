@@ -113,77 +113,64 @@ const Homepage = () => {
                 </div>
               </div>
 
-              {/* Right Content - Solutions + Onboarding (shifted down for video placeholder) */}
-              <div className="lg:mt-48 mt-8">
-                <div className="max-w-lg w-full space-y-6">
-                  
-                  {/* Solutions Section - Horizontal Layout (größer) */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-4">Unsere Lösungen</h3>
-                    <div className="flex gap-4">
-                      {expertiseAreas.map((area, index) => (
-                        <Link 
-                          key={index}
-                          to={area.link}
-                          className="group block transform hover:scale-105 transition-all duration-300 flex-1"
-                          style={{animationDelay: `${index * 100}ms`}}
-                        >
-                          <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:shadow-lg relative overflow-hidden h-20 flex items-center justify-center">
-                            
-                            {/* Gradient overlay on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-white/5 transition-all duration-500 rounded-lg"></div>
-                            
-                            <div className="relative z-10 text-center">
-                              <h4 className="text-base font-bold text-white group-hover:text-slate-200 transition-colors duration-300">
-                                {area.title}
-                              </h4>
-                              <p className="text-xs text-slate-400 group-hover:text-slate-300 transition-colors duration-300 mt-1">
-                                {area.subtitle}
-                              </p>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
+              {/* Right Content - Professional Layout */}
+              <div className="lg:col-span-5 space-y-8">
+                
+                {/* Video Placeholder Space */}
+                <div className="bg-gray-50 border border-gray-200 rounded-lg h-48 flex items-center justify-center">
+                  <div className="text-center text-gray-500">
+                    <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm">Video Platzhalter</span>
                   </div>
-
-                  {/* Onboarding Offer Box - Unter den Lösungen */}
-                  <div className="group">
-                    <div className="bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-green-600/20 backdrop-blur-lg border-2 border-green-400/40 rounded-xl p-3 relative overflow-hidden group-hover:scale-105 transition-all duration-300 shadow-xl">
-                      
-                      {/* Animated background glow */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-emerald-400/10 animate-pulse"></div>
-                      
-                      {/* Floating sparkles */}
-                      <div className="absolute top-1 right-2">
-                        <Sparkles className="w-4 h-4 text-green-400 animate-bounce" style={{animationDelay: '0.5s'}} />
-                      </div>
-                      <div className="absolute bottom-1 left-2">
-                        <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" style={{animationDelay: '1s'}} />
-                      </div>
-                      
-                      <div className="relative z-10 flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-6 h-6 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                            <CheckCircle className="w-4 h-4 text-white" />
-                          </div>
-                          
-                          <div>
-                            <h3 className="text-lg font-bold text-white">
-                              <span className="text-green-400">0,00 €</span> Onboarding
-                            </h3>
-                            <p className="text-slate-300 text-xs">
-                              Bis zum <span className="text-green-400 font-bold">01.01.2027</span>
-                            </p>
-                          </div>
-                        </div>
-                        
-                        <div className="text-right">
-                          <p className="text-slate-400 text-xs">
-                            Jetzt kostenfrei
+                </div>
+                
+                {/* Solutions Cards - Professional */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Unsere Lösungen</h3>
+                  <div className="grid grid-cols-3 gap-3">
+                    {expertiseAreas.map((area, index) => (
+                      <Link 
+                        key={index}
+                        to={area.link}
+                        className="group bg-white border border-gray-200 rounded-lg p-4 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
+                      >
+                        <div className="text-center">
+                          <h4 className="text-sm font-medium text-gray-900 mb-1">
+                            {area.title}
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            {area.subtitle}
                           </p>
                         </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Professional Onboarding Card */}
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                       </div>
+                      
+                      <div>
+                        <h3 className="text-base font-semibold text-gray-900">
+                          <span className="text-green-600">0,00 €</span> Onboarding
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          Bis zum <span className="font-medium">01.01.2027</span>
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="text-right">
+                      <p className="text-xs text-gray-500 uppercase tracking-wide font-medium">
+                        Kostenfrei
+                      </p>
                     </div>
                   </div>
                 </div>
