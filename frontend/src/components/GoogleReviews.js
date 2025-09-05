@@ -73,37 +73,37 @@ const GoogleReviews = () => {
   const duplicatedReviews = [...reviews, ...reviews];
 
   return (
-    <section className="bg-white py-16 md:py-20 overflow-hidden">
-      {/* Apple-like Container */}
+    <section className="bg-acencia py-16 md:py-20 overflow-hidden">
+      {/* Corporate Container */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-        {/* Apple-like Header */}
+        {/* Corporate Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-semibold mb-6 leading-tight text-gray-900 tracking-tight">
-            Das sagen unsere <span className="text-orange-600">Kunden</span>
+          <h2 className="text-4xl md:text-5xl font-semibold mb-6 leading-tight text-white tracking-tight font-heading">
+            Das sagen unsere <span className="text-acencia-orange">Kunden</span>
           </h2>
           
           <div className="flex items-center justify-center space-x-3 mb-6">
             <div className="flex items-center space-x-1">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-6 h-6 text-orange-500 fill-orange-500" />
+                <Star key={star} className="w-6 h-6 text-acencia-orange fill-acencia-orange" />
               ))}
             </div>
-            <span className="text-gray-900 font-semibold text-xl">4.9</span>
-            <span className="text-gray-500 text-base">aus 100+ Bewertungen</span>
+            <span className="text-white font-semibold text-xl">4.9</span>
+            <span className="text-acencia-blue text-base">aus 100+ Bewertungen</span>
           </div>
           
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed font-normal">
             Vertrauen Sie auf die Erfahrungen zufriedener Unternehmen
           </p>
         </div>
 
-        {/* Apple-like Flowing Reviews - Assembly Line Style */}
+        {/* Corporate Flowing Reviews - Assembly Line Style with White Cards */}
         <div className="relative">
           <div className="flex space-x-6 animate-scroll-continuous">
             {duplicatedReviews.map((review, index) => (
               <div
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 w-80 bg-white border border-gray-100 rounded-xl p-6 hover:border-gray-200 hover:shadow-sm transition-all duration-150 ease-out"
+                className="flex-shrink-0 w-80 bg-white border border-gray-100 rounded-xl p-6 hover:bg-gray-50 hover:shadow-sm transition-all duration-150 ease-out"
               >
                 {/* Review Header */}
                 <div className="flex items-center justify-between mb-4">
@@ -112,7 +112,7 @@ const GoogleReviews = () => {
                       {review.initials}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 text-base">{review.name}</h4>
+                      <h4 className="font-semibold text-gray-900 text-base font-heading">{review.name}</h4>
                       <p className="text-gray-500 text-sm">{review.date}</p>
                     </div>
                   </div>
@@ -128,7 +128,7 @@ const GoogleReviews = () => {
                   {[1,2,3,4,5].map((star) => (
                     <Star 
                       key={star} 
-                      className={`w-4 h-4 ${star <= review.rating ? 'text-orange-500 fill-orange-500' : 'text-gray-300'}`}
+                      className={`w-4 h-4 ${star <= review.rating ? 'text-acencia-orange fill-acencia-orange' : 'text-gray-300'}`}
                     />
                   ))}
                 </div>
