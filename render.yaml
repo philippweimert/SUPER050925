@@ -1,0 +1,26 @@
+services:
+  # Backend Service
+  - type: web
+    name: acencia-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn server:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: MONGO_URL
+        sync: false  # Set manually in Render dashboard
+      - key: DB_NAME
+        value: acencia_production
+      - key: CORS_ORIGINS
+        value: https://your-frontend-url.onrender.com,http://localhost:3000
+      - key: ENVIRONMENT
+        value: production
+
+  # Frontend Service  
+  - type: web
+    name: acencia-frontend
+    env: node
+    buildCommand: "cd frontend && yarn install && yarn build"
+    startCommand: "cd frontend && yarn start"
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        value: https://acencia-backend.onrender.com/api
