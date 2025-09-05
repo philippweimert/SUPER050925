@@ -142,44 +142,44 @@ const DieBavPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
-      {/* Hero Section - Same structure as homepage */}
-      <section className="bg-white py-16 md:py-24">
+      {/* Hero Section - Dark Corporate Theme */}
+      <section className="bg-acencia py-16 md:py-24">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* Left Column - 7/12 */}
             <div className="lg:col-span-7">
-              <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
-                Wir machen <span className="text-orange-600">bAV einfach!</span>
+              <h1 className="text-5xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight font-heading">
+                Wir machen <span className="text-acencia-orange">bAV einfach!</span>
               </h1>
               
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl text-acencia-blue mb-8 leading-relaxed">
                 Entlasten Sie Ihr HR-Team mit unserer vollautomatisierten, digitalen All-in-One-Plattform für die betriebliche Altersvorsorge.
               </p>
 
               {/* Benefits List */}
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700 text-base">100% digitale Verwaltung</span>
+                  <div className="w-2 h-2 bg-acencia-orange rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span className="text-white text-base">100% digitale Verwaltung</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700 text-base">Vollautomatisierte Prozesse</span>
+                  <div className="w-2 h-2 bg-acencia-orange rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span className="text-white text-base">Vollautomatisierte Prozesse</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700 text-base">DSGVO-konform & rechtssicher</span>
+                  <div className="w-2 h-2 bg-acencia-orange rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span className="text-white text-base">DSGVO-konform & rechtssicher</span>
                 </li>
               </ul>
 
               {/* CTA Button */}
               <div className="mb-8">
                 <Button 
-                  className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2"
+                  className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2 focus:ring-2 focus:ring-acencia-orange focus:ring-offset-2 focus:ring-offset-acencia"
                   onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
                 >
                   <span>Jetzt starten</span>
@@ -187,7 +187,7 @@ const DieBavPage = () => {
                 </Button>
               </div>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-acencia-blue">
                 Informationen aus dem Geschäftsbetrieb gemäß §93 HGB
               </p>
             </div>
@@ -195,182 +195,123 @@ const DieBavPage = () => {
             {/* Right Column - 5/12 */}
             <div className="lg:col-span-5">
               {/* Video Player */}
-              <div className="bg-gray-100 rounded-lg mb-8 relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
+              <div className="bg-white/10 border border-acencia-blue/30 rounded-lg mb-8 relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
                 {autoplay ? (
                   <div className="relative w-full h-full">
-                    <iframe
-                      id="youtube-player"
-                      width="100%"
-                      height="100%"
-                      src={`https://www.youtube.com/embed/Dw1XYzzPTkY?enablejsapi=1&autoplay=1&controls=1&rel=0`}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="absolute inset-0"
-                    ></iframe>
+                    <div id="youtube-player" className="absolute inset-0 w-full h-full"></div>
                     
-                    {/* Video End Overlay */}
                     {showVideoOverlay && (
-                      <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center z-10">
-                        <div className="bg-white rounded-xl p-8 text-center max-w-sm mx-4">
-                          <h3 className="text-xl font-semibold text-gray-900 mb-4">Video beendet</h3>
+                      <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
+                        <div className="bg-white rounded-lg p-6 text-center max-w-xs">
+                          <h3 className="font-semibold text-gray-900 mb-4 font-heading">Video beendet</h3>
                           <div className="space-y-3">
-                            <button
+                            <Button 
+                              className="w-full bg-acencia-orange hover:bg-acencia-orange/90 text-white px-4 py-2 rounded-lg font-medium"
                               onClick={() => {
                                 if (player) {
-                                  player.seekTo(0);
                                   player.playVideo();
                                   setShowVideoOverlay(false);
                                 }
                               }}
-                              className="w-full bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-150"
                             >
                               Erneut ansehen
-                            </button>
-                            <Link 
-                              to="/bav-rechtliche-grundlagen"
-                              className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg font-medium transition-colors duration-150"
+                            </Button>
+                            <Button 
+                              className="w-full border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-4 py-2 rounded-lg font-medium"
+                              onClick={() => window.location.href = '/gesetzliche-pflichten'}
                             >
                               Gesetzliche Pflichten - bAV
-                            </Link>
+                            </Button>
                           </div>
                         </div>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-full">
+                  <div className="flex items-center justify-center h-full text-acencia-blue">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Play className="w-8 h-8 text-orange-600" />
-                      </div>
-                      <h3 className="text-gray-900 font-medium text-base mb-2">Betriebliche Altersvorsorge einfach einrichten</h3>
-                      <p className="text-gray-600 text-sm">Sehen Sie, wie ACENCIA Ihre bAV digitalisiert</p>
+                      <Play className="w-16 h-16 mx-auto mb-4" />
+                      <p className="text-sm">Video wird geladen...</p>
                     </div>
                   </div>
                 )}
               </div>
-
-              {/* Onboarding Card */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                <div className="flex items-center space-x-2 mb-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                  <span className="text-green-800 font-medium text-sm">0,00 € Onboarding</span>
-                </div>
-                <p className="text-green-700 text-sm">Bis zum 01.01.2027</p>
-                <Button className="w-full mt-4 bg-white border border-green-300 text-green-800 hover:bg-green-50 text-sm py-2">
-                  KOSTENFREI
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Definition Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-gray-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                <Shield className="w-6 h-6 text-orange-600" />
-              </div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Was ist betriebliche Altersvorsorge?
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div>
-                <p className="text-gray-700 leading-relaxed">
-                  Die betriebliche Altersvorsorge (bAV) ist eine Form der privaten Altersvorsorge, die über den Arbeitgeber organisiert wird. 
-                  Sie ergänzt die gesetzliche Rente und bietet Arbeitnehmern die Möglichkeit, zusätzliche Rentenansprüche aufzubauen.
-                </p>
-              </div>
-              <div>
-                <p className="text-gray-700 leading-relaxed">
-                  Seit 2002 haben alle Arbeitnehmer einen Rechtsanspruch auf betriebliche Altersvorsorge durch Entgeltumwandlung. 
-                  Dabei wird ein Teil des Bruttogehalts für die Altersvorsorge verwendet, wodurch sich die Steuer- und Sozialabgabenlast reduziert.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Challenges Section */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div id="herausforderungen">
-            <div 
-              className="cursor-pointer bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-150"
-              onClick={() => setIsChallengesExpanded(!isChallengesExpanded)}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center">
-                    <AlertTriangle className="w-6 h-6 text-red-600" />
+              
+              {/* Onboarding Card - White Card */}
+              <div className="bg-white border border-gray-100 rounded-lg p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-900 font-heading">
+                        <span className="text-green-600">0,00 €</span> Onboarding
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        Bis zum <span className="font-medium">01.01.2027</span>
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                      bAV-Verwaltung ist komplex, zeitaufwendig und fehleranfällig
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      Klicken Sie hier, um die Herausforderungen und unsere Lösungen zu sehen
+                  
+                  <div className="text-right">
+                    <p className="text-xs text-gray-500 uppercase tracking-wide font-medium">
+                      Kostenfrei
                     </p>
                   </div>
                 </div>
-                <div className="text-gray-400">
-                  {isChallengesExpanded ? (
-                    <ChevronUp className="w-5 h-5" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5" />
-                  )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Challenges & Solutions Section */}
+      <section className="bg-acencia py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Herausforderungen & Lösungen
+            </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Von komplexen Problemen zu eleganten Lösungen
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Challenges */}
+            <div>
+              <div className="bg-white rounded-lg p-8">
+                <h3 className="text-2xl font-semibold text-red-600 mb-6 font-heading">Herausforderungen</h3>
+                <div className="space-y-4">
+                  {challenges.map((challenge, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <AlertTriangle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-medium text-gray-900 font-heading">{challenge.title}</h4>
+                        <p className="text-gray-600 text-sm">{challenge.description}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Expandable Content */}
-            <div className={`transition-all duration-200 overflow-hidden ${
-              isChallengesExpanded ? 'max-h-[2000px] opacity-100 mt-6' : 'max-h-0 opacity-0'
-            }`}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Challenges */}
-                <div className="bg-white rounded-lg p-6 border border-gray-200">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <AlertTriangle className="w-5 h-5 text-red-600 mr-2" />
-                    Herausforderungen
-                  </h4>
-                  <ul className="space-y-3">
-                    {challenges.map((challenge, index) => (
-                      <li key={index} className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <h5 className="text-sm font-medium text-gray-900 mb-1">{challenge.title}</h5>
-                          <p className="text-sm text-gray-600">{challenge.description}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Solutions */}
-                <div className="bg-white rounded-lg p-6 border border-gray-200">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
-                    Unsere Lösungen
-                  </h4>
-                  <ul className="space-y-3">
-                    {solutions.map((solution, index) => (
-                      <li key={index} className="flex items-start space-x-3">
-                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <h5 className="text-sm font-medium text-gray-900 mb-1">{solution.title}</h5>
-                          <p className="text-sm text-gray-600">{solution.description}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+            {/* Solutions */}
+            <div>
+              <div className="bg-white rounded-lg p-8">
+                <h3 className="text-2xl font-semibold text-green-600 mb-6 font-heading">Unsere Lösungen</h3>
+                <div className="space-y-4">
+                  {solutions.map((solution, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-medium text-gray-900 font-heading">{solution.title}</h4>
+                        <p className="text-gray-600 text-sm">{solution.description}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -378,48 +319,48 @@ const DieBavPage = () => {
         </div>
       </section>
 
-      {/* More Info Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      {/* More Information Section */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
-              Mehr erfahren
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Weitere Informationen
             </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Vertiefen Sie Ihr Wissen über die betriebliche Altersvorsorge
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {moreInfoBoxes.map((box, index) => (
               <Link 
                 key={index}
                 to={box.link}
-                className="group block"
+                className="group bg-white border border-gray-100 rounded-lg p-8 hover:bg-gray-50 hover:shadow-sm transition-all duration-150 ease-out"
               >
-                <div className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-all duration-150 h-full">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-all duration-150">
-                    <div className="text-orange-600 group-hover:text-orange-700 transition-colors duration-150">
-                      {box.icon}
-                    </div>
+                <div className="w-14 h-14 bg-gradient-to-br from-acencia-orange/10 to-acencia-orange/20 rounded-xl flex items-center justify-center mb-6 group-hover:from-acencia-orange/20 group-hover:to-acencia-orange/30 transition-all duration-150">
+                  <div className="text-acencia-orange">
+                    {box.icon}
                   </div>
-                  
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors duration-150">
-                    {box.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 leading-relaxed mb-4 text-sm">
-                    {box.description}
-                  </p>
-                  
-                  <div className="flex items-center text-orange-600 group-hover:text-orange-700 transition-colors duration-150">
-                    <span className="text-sm font-medium">Mehr erfahren</span>
-                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-150" />
-                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 font-heading">
+                  {box.title}
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6">
+                  {box.description}
+                </p>
+                
+                <div className="flex items-center space-x-2 text-acencia-orange group-hover:text-acencia-orange/80 transition-colors duration-150">
+                  <span className="font-medium text-sm">Mehr erfahren</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-150" />
                 </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );
