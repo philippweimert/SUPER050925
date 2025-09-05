@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './ContactPage.css'; // Import the new CSS
 import Header from "./Header";
+// This component has been updated to align with the user's provided HTML script.
+// The structure, form fields, and validation logic are implemented in a way
+// that is idiomatic to React, using state management and conditional rendering,
+// while producing the same end result and behavior as the original script.
 import Footer from "./Footer";
 
 const ContactPage = () => {
@@ -21,6 +25,15 @@ const ContactPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    useEffect(() => {
+        if (submitStatus === 'success') {
+            const timer = setTimeout(() => {
+                setSubmitStatus(null);
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [submitStatus]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
