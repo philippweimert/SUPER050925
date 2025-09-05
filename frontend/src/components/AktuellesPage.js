@@ -1,272 +1,352 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import Header from './Header';
-import Footer from './Footer';
-import { Button } from "./ui/button";
-import { Calendar, Clock, User, BookOpen, Scale, Gavel, TrendingUp, Filter, Search, ArrowRight } from 'lucide-react';
+import React, { useState } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import { Search, Filter, Calendar, User, ArrowRight, Tag, Clock, TrendingUp } from "lucide-react";
 
 const AktuellesPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('alle');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedYear, setSelectedYear] = useState('all');
 
-  // Mock-Artikel über betriebliche Altersvorsorge
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const categories = [
+    { id: 'all', name: 'Alle Kategorien', count: 24 },
+    { id: 'gesetze', name: 'Gesetzesänderungen', count: 8 },
+    { id: 'steuer', name: 'Steuerrecht', count: 6 },
+    { id: 'praxis', name: 'Praxistipps', count: 5 },
+    { id: 'trends', name: 'Trends', count: 3 },
+    { id: 'digital', name: 'Digitalisierung', count: 2 }
+  ];
+
+  const years = [
+    { id: 'all', name: 'Alle Jahre' },
+    { id: '2025', name: '2025' },
+    { id: '2024', name: '2024' },
+    { id: '2023', name: '2023' }
+  ];
+
   const articles = [
     {
       id: 1,
-      title: "Haftung des Arbeitgebers in der betrieblichen Altersversorgung und Minimierungsstrategien",
-      excerpt: "Ein umfassender Überblick über die Haftungsrisiken von Arbeitgebern in der bAV und bewährte Strategien zur Risikominimierung. Rechtliche Grundlagen und praktische Lösungsansätze für Unternehmen.",
-      date: "2024-12-20",
-      category: "Expertenmeinung",
-      author: "Bettina Glaab",
-      readTime: "12 Min.",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=240&fit=crop",
-      tags: ["Haftung", "Arbeitgeber", "Risikominimierung"],
-      url: "https://www.anwalt.de/rechtstipps/haftung-des-arbeitgebers-in-der-betrieblichen-altersversorgung-und-minimierungsstrategien_185184.html"
+      title: "Neues Betriebsrentenstärkungsgesetz II: Was ändert sich 2025?",
+      excerpt: "Die wichtigsten Änderungen für Arbeitgeber und Arbeitnehmer im Überblick. Neue Freibeträge und erweiterte Fördermöglichkeiten.",
+      category: "gesetze",
+      date: "2025-01-15",
+      author: "Dr. Sarah Müller",
+      readTime: "5 Min.",
+      image: "/api/placeholder/400/250",
+      featured: true
     },
     {
       id: 2,
-      title: "BAG-Urteil: Neue Pflichten bei der Entgeltumwandlung",
-      excerpt: "Das Bundesarbeitsgericht hat in einem wegweisenden Urteil die Arbeitgeberpflichten bei der Entgeltumwandlung präzisiert. Unternehmen müssen künftig über steuerliche Auswirkungen informieren.",
-      date: "2024-12-15",
-      category: "Rechtsprechung",
-      author: "Dr. Maria Schmidt",
-      readTime: "5 Min.",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=240&fit=crop",
-      tags: ["BAG", "Entgeltumwandlung", "Arbeitgeberpflichten"],
-      url: "#"
+      title: "Steuerliche Behandlung von bAV-Zuschüssen in der Praxis",
+      excerpt: "Praktische Hinweise zur korrekten steuerlichen Behandlung von Arbeitgeberzuschüssen zur betrieblichen Altersvorsorge.",
+      category: "steuer",
+      date: "2025-01-10",
+      author: "Marcus Klein",
+      readTime: "4 Min.",
+      image: "/api/placeholder/400/250",
+      featured: false
     },
     {
       id: 3,
-      title: "Betriebsrentenstärkungsgesetz: Änderungen ab 2025",
-      excerpt: "Mit dem neuen Jahr treten wichtige Änderungen des Betriebsrentenstärkungsgesetzes in Kraft. Wir erläutern die wichtigsten Neuerungen für Arbeitgeber und Arbeitnehmer.",
-      date: "2024-12-10",
-      category: "Gesetzgebung",
-      author: "Prof. Dr. Thomas Weber",
-      readTime: "8 Min.",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=240&fit=crop",
-      tags: ["BRSG", "Gesetzesänderung", "2025"],
-      url: "#"
+      title: "Digitale Transformation in der bAV: Trends 2025",
+      excerpt: "Wie die Digitalisierung die betriebliche Altersvorsorge revolutioniert und welche Chancen sich für Unternehmen ergeben.",
+      category: "digital",
+      date: "2025-01-08",
+      author: "Thomas Weber",
+      readTime: "6 Min.",
+      image: "/api/placeholder/400/250",
+      featured: false
     },
     {
       id: 4,
-      title: "Digitalisierung der bAV: Chancen und Herausforderungen",
-      excerpt: "Expertenmeinung zur fortschreitenden Digitalisierung in der betrieblichen Altersvorsorge. Welche Potentiale bieten moderne HR-Technologien?",
-      date: "2024-12-05",
-      category: "Expertenmeinung",
-      author: "Sarah Mueller",
-      readTime: "6 Min.",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=240&fit=crop",
-      tags: ["Digitalisierung", "HR-Tech", "Innovation"],
-      url: "#"
+      title: "Compliance-Checkliste: Arbeitgeberpflichten bei der bAV",
+      excerpt: "Alle wichtigen Pflichten für Arbeitgeber im Bereich der betrieblichen Altersvorsorge - einfach und verständlich erklärt.",
+      category: "praxis",
+      date: "2025-01-05",
+      author: "Anna Richter",
+      readTime: "7 Min.",
+      image: "/api/placeholder/400/250",
+      featured: false
     },
     {
       id: 5,
-      title: "BFH stärkt Arbeitnehmerrechte bei Direktversicherung",
-      excerpt: "Der Bundesfinanzhof hat in einem aktuellen Urteil die Rechte von Arbeitnehmern bei der Direktversicherung gestärkt. Die Auswirkungen für die Praxis.",
-      date: "2024-11-28",
-      category: "Rechtsprechung",
-      author: "Dr. Klaus Weber",
-      readTime: "4 Min.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=240&fit=crop",
-      tags: ["BFH", "Direktversicherung", "Urteil"],
-      url: "#"
+      title: "bKV und bUV: Neue Möglichkeiten für Arbeitgeber",
+      excerpt: "Die betriebliche Kranken- und Unfallversicherung gewinnt an Bedeutung. Was Arbeitgeber wissen sollten.",
+      category: "trends",
+      date: "2025-01-03",
+      author: "Lisa Schmidt",
+      readTime: "5 Min.",
+      image: "/api/placeholder/400/250",
+      featured: false
     },
     {
       id: 6,
-      title: "Nachhaltige bAV: ESG-Kriterien im Fokus",
-      excerpt: "Immer mehr Unternehmen setzen bei der betrieblichen Altersvorsorge auf nachhaltige Anlagestrategien. Wie ESG-Kriterien die bAV verändern.",
-      date: "2024-11-20",
-      category: "Expertenmeinung",
-      author: "Lisa Hoffmann",
-      readTime: "7 Min.",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=240&fit=crop",
-      tags: ["ESG", "Nachhaltigkeit", "Investments"],
-      url: "#"
+      title: "ESG-Kriterien in der betrieblichen Altersvorsorge",
+      excerpt: "Nachhaltigkeit wird auch in der bAV immer wichtiger. Welche ESG-Kriterien Arbeitgeber beachten sollten.",
+      category: "trends",
+      date: "2024-12-28",
+      author: "Dr. Sarah Müller",
+      readTime: "4 Min.",
+      image: "/api/placeholder/400/250",
+      featured: false
     }
   ];
 
-  const categories = ['alle', 'Rechtsprechung', 'Gesetzgebung', 'Expertenmeinung'];
-
-  // Filter articles
   const filteredArticles = articles.filter(article => {
-    const matchesCategory = selectedCategory === 'alle' || article.category === selectedCategory;
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    return matchesCategory && matchesSearch;
+                         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
+    const matchesYear = selectedYear === 'all' || article.date.startsWith(selectedYear);
+    
+    return matchesSearch && matchesCategory && matchesYear;
   });
 
-  const getCategoryIcon = (category) => {
-    switch (category) {
-      case 'Rechtsprechung': return <Gavel className="w-4 h-4" />;
-      case 'Gesetzgebung': return <Scale className="w-4 h-4" />;
-      case 'Expertenmeinung': return <User className="w-4 h-4" />;
-      default: return <BookOpen className="w-4 h-4" />;
-    }
+  const featuredArticle = articles.find(article => article.featured);
+  const otherArticles = filteredArticles.filter(article => !article.featured);
+
+  const getCategoryName = (categoryId) => {
+    const category = categories.find(cat => cat.id === categoryId);
+    return category ? category.name : categoryId;
   };
 
-  const getCategoryColor = (category) => {
-    switch (category) {
-      case 'Rechtsprechung': return 'bg-red-50 text-red-700 border-red-200';
-      case 'Gesetzgebung': return 'bg-blue-50 text-blue-700 border-blue-200';
-      case 'Expertenmeinung': return 'bg-green-50 text-green-700 border-green-200';
-      default: return 'bg-gray-50 text-gray-700 border-gray-200';
-    }
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('de-DE', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
-      {/* Hero Section - Same structure as main pages */}
-      <section className="bg-white py-16 md:py-24">
+      {/* Hero Section */}
+      <section className="bg-acencia py-16 md:py-24">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
-              Aktuelles zur <span className="text-orange-600">bAV</span>
+            <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight font-heading">
+              <span className="text-acencia-orange">Aktuelles</span> zur bAV
             </h1>
-            <p className="text-xl text-gray-600 mb-4 leading-relaxed">
-              Bleiben Sie informiert über die neuesten Entwicklungen, Gesetze und Trends in der bAV
-            </p>
-            <p className="text-sm text-gray-500">
-              Informationen aus dem Geschäftsbetrieb gemäß §93 HGB
+            <p className="text-xl text-acencia-blue max-w-3xl mx-auto leading-relaxed">
+              Bleiben Sie auf dem Laufenden über die neuesten Entwicklungen, Gesetzesänderungen und Trends in der betrieblichen Altersvorsorge.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Filter Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      {/* Search & Filter */}
+      <section className="bg-acencia py-8">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-gray-200 mb-12">
-            <div className="flex flex-col md:flex-row gap-6 items-center">
+          <div className="bg-white rounded-lg p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Search */}
-              <div className="flex-1 relative">
+              <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Artikel durchsuchen..."
-                  className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-150"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acencia-orange focus:border-acencia-orange transition-colors duration-200"
                 />
               </div>
 
               {/* Category Filter */}
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-150 ${
-                      selectedCategory === category
-                        ? 'bg-orange-600 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {category === 'alle' ? 'Alle Kategorien' : category}
-                  </button>
-                ))}
+              <div className="relative">
+                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acencia-orange focus:border-acencia-orange transition-colors duration-200 appearance-none bg-white"
+                >
+                  {categories.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.name} ({category.count})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Year Filter */}
+              <div className="relative">
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <select
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acencia-orange focus:border-acencia-orange transition-colors duration-200 appearance-none bg-white"
+                >
+                  {years.map(year => (
+                    <option key={year.id} value={year.id}>
+                      {year.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredArticles.map((article, index) => (
-              <a 
-                key={article.id}
-                href={article.url}
-                target={article.url !== '#' ? '_blank' : '_self'}
-                rel={article.url !== '#' ? 'noopener noreferrer' : ''}
-                className="block group"
-              >
-                <article className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300 hover:shadow-sm transition-all duration-150 h-full">
-                  <div className="aspect-w-16 aspect-h-9">
-                    <img 
-                      src={article.image} 
-                      alt={article.title}
-                      className="w-full h-48 object-cover"
-                    />
+      {/* Featured Article */}
+      {featuredArticle && (
+        <section className="bg-acencia py-16">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-lg overflow-hidden hover:shadow-sm transition-shadow duration-150">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <div className="bg-gray-100 min-h-[300px] flex items-center justify-center">
+                  <TrendingUp className="w-24 h-24 text-gray-400" />
+                </div>
+                
+                <div className="p-8 lg:p-12">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <span className="bg-acencia-orange text-white px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide">
+                      Featured
+                    </span>
+                    <span className="bg-acencia-orange/10 text-acencia-orange px-3 py-1 rounded-full text-xs font-medium">
+                      {getCategoryName(featuredArticle.category)}
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4 leading-tight font-heading">
+                    {featuredArticle.title}
+                  </h2>
+                  
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {featuredArticle.excerpt}
+                  </p>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <div className="flex items-center space-x-1">
+                        <User className="w-4 h-4" />
+                        <span>{featuredArticle.author}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>{formatDate(featuredArticle.date)}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{featuredArticle.readTime}</span>
+                      </div>
+                    </div>
+                    
+                    <button className="text-acencia-orange hover:text-acencia-orange/80 font-medium flex items-center space-x-1 transition-colors duration-150">
+                      <span>Weiterlesen</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Articles Grid */}
+      <section className="bg-acencia py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          {otherArticles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {otherArticles.map((article) => (
+                <article key={article.id} className="bg-white rounded-lg overflow-hidden hover:bg-gray-50 hover:shadow-sm transition-all duration-150 group">
+                  <div className="bg-gray-100 h-48 flex items-center justify-center">
+                    <div className="text-gray-400">
+                      {article.category === 'gesetze' && <Tag className="w-12 h-12" />}
+                      {article.category === 'steuer' && <Calculator className="w-12 h-12" />}
+                      {article.category === 'praxis' && <CheckCircle className="w-12 h-12" />}
+                      {article.category === 'trends' && <TrendingUp className="w-12 h-12" />}
+                      {article.category === 'digital' && <Monitor className="w-12 h-12" />}
+                    </div>
                   </div>
                   
                   <div className="p-6">
-                    {/* Category Badge */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium border ${getCategoryColor(article.category)}`}>
-                        {getCategoryIcon(article.category)}
-                        {article.category}
+                    <div className="flex items-center space-x-2 mb-3">
+                      <span className="bg-acencia-orange/10 text-acencia-orange px-2 py-1 rounded text-xs font-medium">
+                        {getCategoryName(article.category)}
                       </span>
-                      {article.url !== '#' && (
-                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full border border-blue-200">
-                          <ArrowRight className="w-3 h-3" />
-                          Extern
-                        </span>
-                      )}
                     </div>
-
-                    {/* Title */}
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight group-hover:text-orange-600 transition-colors duration-150 line-clamp-2">
+                    
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight group-hover:text-acencia-orange transition-colors duration-150 font-heading">
                       {article.title}
                     </h3>
-
-                    {/* Excerpt */}
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                       {article.excerpt}
                     </p>
-
-                    {/* Meta Info */}
-                    <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-gray-100">
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1">
+                    
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-1">
                           <User className="w-3 h-3" />
-                          <span className="truncate max-w-20">{article.author}</span>
+                          <span>{article.author}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          <span>{article.readTime}</span>
+                        <div className="flex items-center space-x-1">
+                          <Calendar className="w-3 h-3" />
+                          <span>{formatDate(article.date)}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        <span>{new Date(article.date).toLocaleDateString('de-DE')}</span>
+                      
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{article.readTime}</span>
                       </div>
-                    </div>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {article.tags.map((tag, tagIndex) => (
-                        <span key={tagIndex} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">
-                          #{tag}
-                        </span>
-                      ))}
                     </div>
                   </div>
                 </article>
-              </a>
-            ))}
-          </div>
-
-          {/* No Results */}
-          {filteredArticles.length === 0 && (
-            <div className="text-center py-12">
-              <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Keine Artikel gefunden</h3>
-              <p className="text-gray-600">Versuchen Sie andere Suchbegriffe oder wählen Sie eine andere Kategorie.</p>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <Search className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-white mb-2 font-heading">
+                Keine Artikel gefunden
+              </h3>
+              <p className="text-acencia-blue">
+                Versuchen Sie es mit anderen Suchbegriffen oder Filtern.
+              </p>
             </div>
           )}
+        </div>
+      </section>
 
-          {/* Back to bAV Button */}
-          <div className="text-center mt-12">
-            <Link to="/die-bav">
-              <Button className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-lg font-medium transition-colors duration-150">
-                Zurück zur bAV Übersicht
-              </Button>
-            </Link>
+      {/* Newsletter CTA */}
+      <section className="bg-acencia py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="bg-white rounded-lg p-12 text-center">
+            <div className="w-16 h-16 bg-acencia-orange/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <TrendingUp className="w-8 h-8 text-acencia-orange" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 font-heading">
+              Immer auf dem Laufenden bleiben
+            </h2>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Verpassen Sie keine wichtigen Neuigkeiten zur betrieblichen Altersvorsorge. Unser Newsletter informiert Sie über alle relevanten Entwicklungen.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Ihre E-Mail-Adresse"
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acencia-orange focus:border-acencia-orange transition-colors duration-200"
+              />
+              <button className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 whitespace-nowrap">
+                Newsletter abonnieren
+              </button>
+            </div>
+            <p className="text-xs text-gray-500 mt-4">
+              Kostenlos und jederzeit abbestellbar. Ihre Daten sind bei uns sicher.
+            </p>
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );
