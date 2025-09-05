@@ -1,55 +1,75 @@
-from fastapi import FastAPI, APIRouter, HTTPException
-from starlette.middleware.cors import CORSMiddleware
 import os
 import logging
-from pathlib import Path
-from pydantic import BaseModel, Field, EmailStr
-from typing import List, Optional
 import uuid
 from datetime import datetime
-import aiosmtplib
-from email.mime.text import MIMEText
+from pathlib import Path
+from typing import Optional, List
+
+import databases
+import sqlalchemy
+from dotenv import load_dotenv
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from fastapi import FastAPI, APIRouter, HTTPException
+from pydantic import BaseModel, Field, EmailStr
+from starlette.middleware.cors import CORSMiddleware
 
+# Load environment variables from .env file
+load_dotenv()
 
+# --- Configuration ---
 ROOT_DIR = Path(__file__).parent
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://user:password@localhost/dbname")
 
-# MongoDB connection removed
+# --- Database Setup ---
+database = databases.Database(DATABASE_URL)
+metadata = sqlalchemy.MetaData()
 
-# Create the main app without a prefix
-app = FastAPI()
+# Define the 'contacts' table
+contacts = sqlalchemy.Table(
+    "contacts",
+    metadata,
+    sqlalchemy.Column("id", sqlalchemy.String, primary_key=True, default=lambda: str(uuid.uuid4())),
+    sqlalchemy.Column("name", sqlalchemy.String, nullable=False),
+    sqlalchemy.Column("email", sqlalchemy.String, nullable=False),
+    sqlalchemy.Column("company", sqlalchemy.String, nullable=True),
+    sqlalchemy.Column("phone", sqlalchemy.String, nullable=True),
+    sqlalchemy.Column("position", sqlalchemy.String, nullable=True),
+    sqlalchemy.Column("message", sqlalchemy.Text, nullable=False),
+    sqlalchemy.Column("created_at", sqlalchemy.DateTime, nullable=False, default=datetime.utcnow),
+)
 
-# Create a router with the /api prefix
-api_router = APIRouter(prefix="/api")
+# Create the table if it doesn't exist (synchronous call, fine for startup)
+engine = sqlalchemy.create_engine(DATABASE_URL)
+metadata.create_all(engine)
 
 
-# Define Models
-class StatusCheck(BaseModel):
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
-
-class StatusCheckCreate(BaseModel):
-    client_name: str
-
+# --- Pydantic Models ---
 class ContactForm(BaseModel):
     name: str
     email: EmailStr
     company: Optional[str] = None
     phone: Optional[str] = None
+    position: Optional[str] = None
     message: str
 
-# Email configuration
-async def send_email(contact_data: ContactForm):
-    """Send contact form data via email"""
-    try:
-        # Create message
-        msg = MIMEMultipart()
-        msg['From'] = "noreply@acencia.de"
-        msg['To'] = "philipp.weimert@acencia.de"
-        msg['Subject'] = f"Neue Kontaktanfrage von {contact_data.name}"
 
-        # Email body
+# --- FastAPI App Setup ---
+app = FastAPI(title="ACENCIA Backend")
+api_router = APIRouter(prefix="/api")
+
+# --- Logging Setup ---
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+
+# --- Helper Functions ---
+async def log_email_notification(contact_data: ContactForm):
+    """Logs the contact form data as if sending an email."""
+    try:
         body = f"""
 Neue Kontaktanfrage über die Website:
 
@@ -57,6 +77,7 @@ Name: {contact_data.name}
 E-Mail: {contact_data.email}
 Unternehmen: {contact_data.company or 'Nicht angegeben'}
 Telefon: {contact_data.phone or 'Nicht angegeben'}
+Position: {contact_data.position or 'Nicht angegeben'}
 
 Nachricht:
 {contact_data.message}
@@ -64,58 +85,72 @@ Nachricht:
 ---
 Gesendet am: {datetime.now().strftime('%d.%m.%Y um %H:%M:%S')}
 """
-
-        msg.attach(MIMEText(body, 'plain', 'utf-8'))
-
-        # For now, we'll use a simple SMTP setup that would work with most providers
-        # In production, you would configure this with your actual SMTP settings
-        
-        # Since we don't have SMTP credentials configured, we'll log the email content.
-        # The database saving logic is removed.
-        
-        # Log the email content for now (in production, this would actually send)
-        logger.info(f"Contact form submission: {body}")
-        
-        return {"status": "success", "message": "Nachricht erfolgreich gesendet"}
-        
+        logger.info(f"Contact form submission (email log): {body}")
     except Exception as e:
-        logger.error(f"Failed to send email: {str(e)}")
-        raise HTTPException(status_code=500, detail="Fehler beim Senden der Nachricht")
+        logger.error(f"Failed to log email notification: {str(e)}")
+        # This function should not block the main flow, so we don't re-raise
 
-# Add your routes to the router instead of directly to app
+
+# --- API Endpoints ---
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Welcome to the ACENCIA API"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.dict()
-    status_obj = StatusCheck(**status_dict)
-    # The database insertion is removed. We just return the object.
-    logger.info(f"Status check created (but not saved): {status_obj.dict()}")
-    return status_obj
-
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # The database query is removed. We return an empty list.
-    logger.info("Status checks requested (returning empty list).")
-    return []
 
 @api_router.post("/contact")
 async def submit_contact_form(contact_data: ContactForm):
-    """Handle contact form submission"""
+    """
+    Handles contact form submission:
+    1. Saves the data to the PostgreSQL database.
+    2. Logs an email notification.
+    """
     try:
-        result = await send_email(contact_data)
-        return result
-    except HTTPException as e:
-        raise e
+        # 1. Save to database
+        query = contacts.insert().values(
+            name=contact_data.name,
+            email=contact_data.email,
+            company=contact_data.company,
+            phone=contact_data.phone,
+            position=contact_data.position,
+            message=contact_data.message,
+            created_at=datetime.utcnow(),
+        )
+        await database.execute(query)
+        logger.info(f"Successfully saved contact from {contact_data.email} to database.")
+
+        # 2. Log email notification
+        await log_email_notification(contact_data)
+
+        return {"status": "success", "message": "Nachricht erfolgreich empfangen und gespeichert."}
+
     except Exception as e:
-        logger.error(f"Unexpected error in contact form: {str(e)}")
-        raise HTTPException(status_code=500, detail="Ein unerwarteter Fehler ist aufgetreten")
+        logger.error(f"Error processing contact form: {str(e)}")
+        raise HTTPException(status_code=500, detail="Fehler bei der Verarbeitung Ihrer Anfrage.")
 
-# Include the router in the main app
+
+# --- App Lifecycle Events ---
+@app.on_event("startup")
+async def startup():
+    logger.info("Application startup...")
+    try:
+        await database.connect()
+        logger.info("Database connection established.")
+    except Exception as e:
+        logger.critical(f"Could not connect to the database: {e}")
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    logger.info("Application shutdown...")
+    try:
+        await database.disconnect()
+        logger.info("Database connection closed.")
+    except Exception as e:
+        logger.error(f"Error during database disconnection: {e}")
+
+
+# --- Middleware and Router ---
 app.include_router(api_router)
-
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
@@ -123,12 +158,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
-# shutdown_db_client is removed as there is no database connection.
