@@ -24,36 +24,36 @@ const CustomerSegments = () => {
   ];
 
   return (
-    <section className="bg-white py-16 md:py-20">
-      {/* Apple-like Container: Max-width 1200px with proper padding */}
+    <section className="bg-acencia py-16 md:py-20">
+      {/* Corporate Container: Max-width 1200px with proper padding */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-        {/* Apple-like Header with proper typography hierarchy */}
+        {/* Corporate Header with proper typography hierarchy */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
             Für jede Unternehmensgröße
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed font-normal">
             Maßgeschneiderte bAV-Lösungen, die mit Ihrem Unternehmen wachsen
           </p>
         </div>
 
-        {/* Apple-like 12-column Grid Layout */}
+        {/* Corporate 12-column Grid Layout with White Cards */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
           {segments.map((segment, index) => (
             <div 
               key={index} 
-              className="md:col-span-4 bg-white border border-gray-100 rounded-lg p-8 hover:border-gray-200 hover:shadow-sm transition-all duration-150 ease-out group"
+              className="md:col-span-4 bg-white border border-gray-100 rounded-lg p-8 hover:bg-gray-50 hover:shadow-sm transition-all duration-150 ease-out group"
             >
-              {/* Apple-like Icon Design */}
-              <div className="w-14 h-14 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:from-orange-100 group-hover:to-orange-200 transition-all duration-150">
-                <div className="text-orange-600 group-hover:text-orange-700 transition-colors duration-150">
+              {/* Corporate Icon Design */}
+              <div className="w-14 h-14 bg-gradient-to-br from-acencia-orange/10 to-acencia-orange/20 rounded-xl flex items-center justify-center mb-6 group-hover:from-acencia-orange/20 group-hover:to-acencia-orange/30 transition-all duration-150">
+                <div className="text-acencia-orange group-hover:text-acencia-orange transition-colors duration-150">
                   {segment.icon}
                 </div>
               </div>
               
-              {/* Apple-like Content Typography */}
+              {/* Corporate Content Typography */}
               <div className="mb-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2 tracking-tight">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2 tracking-tight font-heading">
                   {segment.title}
                 </h3>
                 <p className="text-sm text-gray-500 font-medium mb-4 tracking-wide uppercase">
@@ -64,9 +64,9 @@ const CustomerSegments = () => {
                 </p>
               </div>
 
-              {/* Apple-like Secondary Button */}
+              {/* Corporate Button with Orange Accent */}
               <button 
-                className="w-full bg-white border border-gray-200 hover:border-gray-300 text-gray-900 py-3 px-4 rounded-lg font-medium transition-all duration-150 ease-out flex items-center justify-center space-x-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                className="w-full bg-acencia-orange hover:bg-acencia-orange/90 text-white py-3 px-4 rounded-lg font-medium transition-all duration-150 ease-out flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-acencia-orange focus:ring-offset-2"
                 onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
               >
                 <span>Beratung vereinbaren</span>
