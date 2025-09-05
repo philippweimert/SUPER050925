@@ -3,28 +3,28 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-16">
-      {/* Apple-like Container */}
+    <footer className="bg-acencia-light border-t border-acencia-blue/30 py-16">
+      {/* Corporate Container */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           {/* Company Info */}
           <div className="md:col-span-7">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8">
               <Link to="/" className="block mb-6 md:mb-0">
-                <div className="text-2xl font-semibold text-gray-900 tracking-tight">
+                <div className="text-2xl font-semibold text-white tracking-tight font-heading">
                   ACENCIA
                 </div>
-                <div className="text-sm text-gray-500 font-medium tracking-wider uppercase mt-1">
+                <div className="text-sm text-acencia-blue font-medium tracking-wider uppercase mt-1">
                   Wir machen bAV einfach
                 </div>
               </Link>
               
-              {/* Apple-like Social Media Buttons */}
+              {/* Corporate Social Media Buttons */}
               <div className="flex items-center space-x-3">
                 {/* LinkedIn Button */}
                 <button
                   onClick={() => window.open('https://www.linkedin.com/company/acencia/', '_blank')}
-                  className="flex items-center justify-center w-10 h-10 bg-gray-200 hover:bg-orange-100 text-gray-600 hover:text-orange-600 rounded-lg transition-all duration-150 ease-out focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                  className="flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-acencia-orange text-acencia-blue hover:text-white rounded-lg transition-all duration-150 ease-out focus:outline-none focus:ring-2 focus:ring-acencia-orange focus:ring-offset-2 focus:ring-offset-acencia"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -44,7 +44,7 @@ const Footer = () => {
                 {/* YouTube Button */}
                 <button
                   onClick={() => window.open('https://www.youtube.com/@ACENCIAde', '_blank')}
-                  className="flex items-center justify-center w-10 h-10 bg-gray-200 hover:bg-orange-100 text-gray-600 hover:text-orange-600 rounded-lg transition-all duration-150 ease-out focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                  className="flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-acencia-orange text-acencia-blue hover:text-white rounded-lg transition-all duration-150 ease-out focus:outline-none focus:ring-2 focus:ring-acencia-orange focus:ring-offset-2 focus:ring-offset-acencia"
                   aria-label="YouTube"
                 >
                   <svg
@@ -64,12 +64,12 @@ const Footer = () => {
             </div>
             
             <div className="space-y-4">
-              <p className="text-gray-600 text-base leading-relaxed font-normal max-w-lg">
+              <p className="text-acencia-blue text-base leading-relaxed font-normal max-w-lg">
                 Über 30 Jahren Erfahrung in der betrieblichen Altersvorsorge.<br />
                 einfach und digital.
               </p>
-              <div className="text-sm text-gray-500 space-y-1">
-                <p className="font-medium text-gray-700">ACENCIA GmbH</p>
+              <div className="text-sm text-acencia-blue space-y-1">
+                <p className="font-medium text-white">ACENCIA GmbH</p>
                 <p>Hackenheim, Deutschland</p>
                 <p>Geschäftsführer: Uwe Weimert</p>
               </div>
@@ -78,15 +78,15 @@ const Footer = () => {
 
           {/* Navigation */}
           <div className="md:col-span-2">
-            <h3 className="text-base font-semibold mb-6 text-gray-900">Navigation</h3>
+            <h3 className="text-base font-semibold mb-6 text-white font-heading">Navigation</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/ueber-uns" className="text-gray-600 hover:text-orange-600 transition-colors duration-150 text-sm font-normal">
+                <Link to="/ueber-uns" className="text-acencia-blue hover:text-white transition-colors duration-150 text-sm font-normal">
                   Über uns
                 </Link>
               </li>
               <li>
-                <Link to="/kontakt" className="text-gray-600 hover:text-orange-600 transition-colors duration-150 text-sm font-normal">
+                <Link to="/kontakt" className="text-acencia-blue hover:text-white transition-colors duration-150 text-sm font-normal">
                   Kontakt
                 </Link>
               </li>
@@ -95,7 +95,7 @@ const Footer = () => {
                   href="https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-orange-600 transition-colors duration-150 text-sm font-normal"
+                  className="text-acencia-blue hover:text-white transition-colors duration-150 text-sm font-normal"
                 >
                   Termin vereinbaren
                 </a>
@@ -105,8 +105,8 @@ const Footer = () => {
 
           {/* Services */}
           <div className="md:col-span-3">
-            <h3 className="text-base font-semibold mb-6 text-gray-900">Services</h3>
-            <ul className="space-y-3 text-gray-600">
+            <h3 className="text-base font-semibold mb-6 text-white font-heading">Services</h3>
+            <ul className="space-y-3 text-acencia-blue">
               <li className="text-sm font-normal">Rechtliche Prüfung & Einrichtung</li>
               <li className="text-sm font-normal">Digitale bAV-Verwaltung</li>
               <li className="text-sm font-normal">Mitarbeiterkommunikation</li>
@@ -115,17 +115,17 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Apple-like Bottom Section */}
-        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
-          <div className="text-sm text-gray-500 font-normal">
+        {/* Corporate Bottom Section */}
+        <div className="border-t border-acencia-blue/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+          <div className="text-sm text-acencia-blue font-normal">
             © 2025 ACENCIA GmbH. Alle Rechte vorbehalten.
           </div>
 
           <div className="flex flex-col md:flex-row md:space-x-8 space-y-2 md:space-y-0">
-            <Link to="/datenschutz" className="text-sm text-gray-500 hover:text-orange-600 transition-colors duration-150 font-normal">
+            <Link to="/datenschutz" className="text-sm text-acencia-blue hover:text-white transition-colors duration-150 font-normal">
               Datenschutzerklärung
             </Link>
-            <Link to="/impressum" className="text-sm text-gray-500 hover:text-orange-600 transition-colors duration-150 font-normal">
+            <Link to="/impressum" className="text-sm text-acencia-blue hover:text-white transition-colors duration-150 font-normal">
               Impressum
             </Link>
           </div>
