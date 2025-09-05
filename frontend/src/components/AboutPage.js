@@ -1,137 +1,97 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Button } from "./ui/button";
-import { Users, Award, Lightbulb, Shield, ArrowRight, MapPin, Phone, Mail, Calendar } from "lucide-react";
+import { Users, Target, Award, TrendingUp, ArrowRight, CheckCircle, Heart, Shield, Building2 } from "lucide-react";
 
 const AboutPage = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const values = [
     {
-      icon: <Users className="w-6 h-6" />,
-      title: "Partnerschaft",
-      description: "Echter Partner unserer Kunden mit langfristiger Begleitung."
-    },
-    {
-      icon: <Award className="w-6 h-6" />,
-      title: "Expertise", 
-      description: "Über 30 Jahre Erfahrung in der betrieblichen Altersvorsorge."
-    },
-    {
-      icon: <Lightbulb className="w-6 h-6" />,
-      title: "Innovation",
-      description: "Digitalisierung und Automatisierung für maximale Effizienz."
+      icon: <Target className="w-6 h-6" />,
+      title: "Fokussiert",
+      description: "Wir konzentrieren uns auf das, was wir am besten können: betriebliche Vorsorge digital und einfach zu machen."
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: "Sicherheit",
-      description: "Rechtssichere und compliance-konforme Abwicklung als Standard."
+      title: "Vertrauensvoll",
+      description: "Über 30 Jahre Erfahrung und höchste Sicherheitsstandards bilden das Fundament unserer Arbeit."
+    },
+    {
+      icon: <Heart className="w-6 h-6" />,
+      title: "Persönlich",
+      description: "Hinter der Technologie stehen Menschen, die sich um Ihre Anliegen kümmern."
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Innovativ",
+      description: "Wir entwickeln kontinuierlich neue Lösungen für die Herausforderungen von morgen."
     }
   ];
 
+  const milestones = [
+    {
+      year: "1990",
+      title: "Gründung",
+      description: "Start als Beratungsunternehmen für betriebliche Altersvorsorge"
+    },
+    {
+      year: "2005", 
+      title: "Digitalisierung",
+      description: "Erste digitale Verwaltungstools für die bAV-Administration"
+    },
+    {
+      year: "2015",
+      title: "Expansion",
+      description: "Erweiterung um bKV und bUV sowie bundesweite Präsenz"
+    },
+    {
+      year: "2020",
+      title: "All-in-One Platform",
+      description: "Launch der vollintegrierten digitalen Plattform"
+    },
+    {
+      year: "2025",
+      title: "KI-Innovation",
+      description: "Integration von KI für noch smartere Automatisierung"
+    }
+  ];
+
+  const stats = [
+    { number: "30+", label: "Jahre Erfahrung" },
+    { number: "500+", label: "Zufriedene Unternehmen" },
+    { number: "50.000+", label: "Betreute Mitarbeiter" },
+    { number: "99.9%", label: "Verfügbarkeit" }
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
-      {/* Hero Section - Apple-like */}
-      <section className="bg-white py-16 md:py-24">
+      {/* Hero Section */}
+      <section className="bg-acencia py-16 md:py-24">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
-              Über <span className="text-orange-600">ACENCIA</span>
+            <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight font-heading">
+              Über <span className="text-acencia-orange">ACENCIA</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-4 leading-relaxed">
-              Ihr Partner für digitale betriebliche Altersvorsorge
-            </p>
-            <p className="text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Seit über 30 Jahren begleiten wir Unternehmen und deren Mitarbeiter bei der Gestaltung 
-              und Verwaltung der betrieblichen Altersvorsorge. Mit Innovation und Expertise machen wir bAV einfach.
+            <p className="text-xl text-acencia-blue max-w-3xl mx-auto leading-relaxed mb-8">
+              Seit über 30 Jahren gestalten wir die Zukunft der betrieblichen Vorsorge. Mit Leidenschaft, Expertise und modernster Technologie.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Mission Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-gray-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                <Lightbulb className="w-6 h-6 text-orange-600" />
-              </div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Unsere Mission
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Wir digitalisieren und automatisieren die betriebliche Altersvorsorge, um HR-Teams zu entlasten 
-                  und Unternehmen dabei zu helfen, ihren Mitarbeitern attraktive Zusatzleistungen zu bieten.
-                </p>
-                <p className="text-gray-700 leading-relaxed">
-                  Unser Ziel ist es, die Komplexität der bAV zu reduzieren und durch intelligente Technologie 
-                  eine reibungslose, rechtssichere Abwicklung zu gewährleisten.
-                </p>
-              </div>
-              <div className="bg-orange-50 rounded-lg p-6 border border-orange-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Warum ACENCIA?</h3>
-                <ul className="space-y-2 text-gray-700 text-sm">
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>30+ Jahre Branchenerfahrung</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>100% digitale Lösungen</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>DSGVO-konforme Abwicklung</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Persönliche Betreuung</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
-              Unsere Werte
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Diese Grundsätze leiten unser tägliches Handeln und prägen unsere Zusammenarbeit mit Kunden und Partnern.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {values.map((value, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-all duration-150"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <div className="text-orange-600">
-                      {value.icon}
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {value.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      {value.description}
-                    </p>
-                  </div>
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-acencia-orange mb-2 font-heading">
+                  {stat.number}
+                </div>
+                <div className="text-sm md:text-base text-acencia-blue">
+                  {stat.label}
                 </div>
               </div>
             ))}
@@ -139,122 +99,185 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Company Info */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      {/* Mission Section */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {/* Company Details */}
-            <div className="bg-white rounded-lg p-8 border border-gray-200">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                  <Award className="w-6 h-6 text-orange-600" />
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-900 tracking-tight">
-                  Unternehmen
-                </h3>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+                Unsere Mission
+              </h2>
+              <p className="text-lg text-acencia-blue mb-6 leading-relaxed">
+                Wir machen betriebliche Vorsorge einfach, digital und menschlich. Unser Ziel ist es, Unternehmen und ihre Mitarbeiter mit innovativen Lösungen zu unterstützen, die komplexe Prozesse vereinfachen und echten Mehrwert schaffen.
+              </p>
+              <p className="text-lg text-acencia-blue mb-8 leading-relaxed">
+                Dabei verbinden wir jahrzehntelange Expertise mit modernster Technologie und behalten immer den Menschen im Mittelpunkt unseres Handelns.
+              </p>
               
-              <div className="space-y-4 text-gray-700">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Gründung</h4>
-                  <p className="text-sm">Seit über 30 Jahren am Markt etabliert</p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Geschäftsführung</h4>
-                  <p className="text-sm">Uwe Weimert</p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Spezialisierung</h4>
-                  <p className="text-sm">Betriebliche Altersvorsorge, Digitalisierung, HR-Technologie</p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Rechtsform</h4>
-                  <p className="text-sm">GmbH, registriert beim Amtsgericht Mainz</p>
-                </div>
-              </div>
+              <button 
+                className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 flex items-center space-x-2"
+                onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
+              >
+                <span>Lernen Sie uns kennen</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* Contact Details */}
-            <div className="bg-white rounded-lg p-8 border border-gray-200">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                  <MapPin className="w-6 h-6 text-orange-600" />
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-900 tracking-tight">
-                  Kontakt
-                </h3>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <MapPin className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Adresse</h4>
-                    <p className="text-gray-700 text-sm">
-                      ACENCIA GmbH<br />
-                      Fasanenweg 5<br />
-                      55546 Hackenheim
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <Phone className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Telefon</h4>
-                    <a href="tel:+4967038061180" className="text-orange-600 hover:text-orange-700 text-sm transition-colors duration-150">
-                      +49 (0) 6703 80611-80
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <Mail className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">E-Mail</h4>
-                    <a href="mailto:info@acencia.de" className="text-orange-600 hover:text-orange-700 text-sm transition-colors duration-150">
-                      info@acencia.de
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div className="bg-white rounded-lg p-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6 font-heading">
+                Warum ACENCIA?
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-acencia-orange flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">30+ Jahre Branchenerfahrung</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-acencia-orange flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">100% DSGVO-konforme Lösungen</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-acencia-orange flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Vollautomatisierte Prozesse</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-acencia-orange flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Persönlicher Kundenservice</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-acencia-orange flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Kontinuierliche Innovation</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="bg-orange-50 py-16 md:py-20">
+      {/* Values Section */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-orange-200 text-center">
-            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Calendar className="w-8 h-8 text-orange-600" />
-            </div>
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
-              Bereit für eine Zusammenarbeit?
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Unsere Werte
             </h2>
-            <p className="text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Lassen Sie uns gemeinsam Ihre betriebliche Altersvorsorge digitalisieren und Ihr HR-Team entlasten. 
-              Vereinbaren Sie noch heute einen unverbindlichen Beratungstermin.
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Diese Prinzipien leiten uns in allem, was wir tun
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 text-center hover:bg-gray-50 transition-colors duration-150">
+                <div className="w-14 h-14 bg-gradient-to-br from-acencia-orange/10 to-acencia-orange/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="text-acencia-orange">
+                    {value.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 font-heading">
+                  {value.title}
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="bg-acencia py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Unsere Geschichte
+            </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Von den Anfängen bis zur digitalen Zukunft
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-acencia-blue/30 hidden md:block"></div>
+            
+            <div className="space-y-8">
+              {milestones.map((milestone, index) => (
+                <div key={index} className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                  {/* Content */}
+                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
+                      <div className="text-2xl font-bold text-acencia-orange mb-2 font-heading">
+                        {milestone.year}
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2 font-heading">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-gray-600">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Timeline Dot */}
+                  <div className="w-4 h-4 bg-acencia-orange rounded-full border-4 border-acencia flex-shrink-0 z-10 my-4 md:my-0"></div>
+                  
+                  {/* Spacer */}
+                  <div className="w-full md:w-5/12"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="bg-acencia py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Unser Team
+            </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed mb-8">
+              Erfahrene Experten mit Leidenschaft für betriebliche Vorsorge
+            </p>
+            
+            <Link
+              to="/ueber-uns/service-team"
+              className="inline-flex items-center space-x-2 bg-acencia-orange hover:bg-acencia-orange/90 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200"
+            >
+              <span>Unser Service-Team kennenlernen</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-acencia py-16 md:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+          <div className="bg-white rounded-lg p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 font-heading">
+              Lassen Sie uns gemeinsam starten
+            </h2>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Erfahren Sie, wie ACENCIA auch Ihr Unternehmen bei der betrieblichen Vorsorge unterstützen kann.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2"
+              <button 
+                className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
                 onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
               >
-                <span>Beratungstermin vereinbaren</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button 
-                className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-lg font-medium transition-colors duration-150"
-                onClick={() => window.location.href = '/kontakt'}
+                <span>Kostenlose Beratung</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+              <Link
+                to="/kontakt"
+                className="border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
               >
-                Kontakt aufnehmen
-              </Button>
+                <span>Kontakt aufnehmen</span>
+              </Link>
             </div>
           </div>
         </div>
