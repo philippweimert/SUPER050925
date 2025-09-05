@@ -1,155 +1,257 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Button } from "./ui/button";
-import { Scale, AlertTriangle, CheckCircle, FileText, Users, ArrowRight, Calendar } from "lucide-react";
+import { AlertTriangle, FileText, CheckCircle, ArrowRight, Shield, Users, Building2, Clock, Euro, Scale } from "lucide-react";
 
 const EmployerObligationsPage = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const obligations = [
     {
-      title: "Anspruch auf Entgeltumwandlung (§ 1a BetrAVG)",
-      description: "Jeder Arbeitnehmer hat seit 2002 einen gesetzlichen Anspruch auf Entgeltumwandlung.",
-      details: "Arbeitgeber sind verpflichtet, mindestens den Weg über eine Direktversicherung anzubieten.",
-      icon: <Users className="w-5 h-5" />
+      icon: <FileText className="w-6 h-6" />,
+      title: "Informationspflicht",
+      subtitle: "§ 1a BetrAVG",
+      description: "Arbeitgeber müssen ihre Mitarbeiter über die Möglichkeiten der betrieblichen Altersvorsorge informieren.",
+      details: [
+        "Schriftliche Information bei Einstellung",
+        "Information über steuerliche Förderung",
+        "Hinweis auf Entgeltumwandlung",
+        "Jährliche Wiederholung der Information"
+      ],
+      deadline: "Bei Einstellung und jährlich",
+      penalty: "Bis zu 25.000 € Bußgeld"
     },
     {
-      title: "Arbeitgeberzuschuss seit 2022 (15%)",
-      description: "Seit 01.01.2022 müssen Arbeitgeber 15% der gesparten Sozialversicherungsbeiträge weiterleiten.",
-      details: "Dies gilt für alle neu abgeschlossenen Entgeltumwandlungen. Für Altverträge gilt eine Übergangsfrist bis 2025.",
-      icon: <FileText className="w-5 h-5" />
+      icon: <Users className="w-6 h-6" />,
+      title: "Angebotspflicht",
+      subtitle: "§ 1a BetrAVG",
+      description: "Arbeitgeber müssen eine betriebliche Altersvorsorge anbieten, wenn der Arbeitnehmer dies wünscht.",
+      details: [
+        "Angebot einer Direktversicherung",
+        "Pensionskasse oder Pensionsfonds",
+        "Mindestens ein Durchführungsweg",
+        "Zuschuss bei Neuverträgen ab 2019"
+      ],
+      deadline: "Nach Mitarbeiteranfrage",
+      penalty: "Rechtliche Konsequenzen"
     },
     {
-      title: "Informationspflichten",
-      description: "Arbeitgeber müssen über Möglichkeiten und Auswirkungen der bAV aufklären.",
-      details: "Dazu gehören Informationen über steuerliche Auswirkungen, Sozialversicherung und Auswirkungen auf andere Sozialleistungen.",
-      icon: <AlertTriangle className="w-5 h-5" />
+      icon: <Euro className="w-6 h-6" />,
+      title: "Zuschuss zur Entgeltumwandlung",
+      subtitle: "§ 1a Abs. 1a BetrAVG",
+      description: "Arbeitgeber müssen 15% Zuschuss zahlen, wenn sie durch die Entgeltumwandlung Sozialversicherung sparen.",
+      details: [
+        "15% des umgewandelten Entgelts",
+        "Mindestens gesparte Sozialversicherung",
+        "Für Neuverträge ab 2019 sofort",
+        "Für Altverträge ab 2022"
+      ],
+      deadline: "Sofort bei Neuverträgen",
+      penalty: "Nachzahlungspflicht"
     },
     {
+      icon: <Shield className="w-6 h-6" />,
+      title: "Portabilitätsrechte",
+      subtitle: "§ 4 BetrAVG",
+      description: "Sicherstellung der Übertragbarkeit von Betriebsrenten bei Jobwechsel.",
+      details: [
+        "Unverfallbare Anwartschaften",
+        "Übertragung zum neuen Arbeitgeber",
+        "Private Weiterführung möglich",
+        "Information über Optionen"
+      ],
+      deadline: "Bei Beendigung des Arbeitsverhältnisses",
+      penalty: "Schadensersatzansprüche"
+    },
+    {
+      icon: <FileText className="w-6 h-6" />,
       title: "Dokumentationspflichten",
-      description: "Ordnungsgemäße Führung von Unterlagen und Nachweisen.",
-      details: "Alle bAV-relevanten Dokumente müssen aufbewahrt und bei Bedarf vorgelegt werden können.",
-      icon: <Scale className="w-5 h-5" />
+      subtitle: "§ 4a BetrAVG",
+      description: "Umfassende Dokumentation aller bAV-bezogenen Vorgänge und Entscheidungen.",
+      details: [
+        "Versorgungsordnungen aktuell halten",
+        "Individualvereinbarungen dokumentieren",
+        "Aufbewahrung 30 Jahre",
+        "Nachweispflicht gegenüber Behörden"
+      ],
+      deadline: "Fortlaufend",
+      penalty: "Beweisprobleme bei Streitigkeiten"
+    },
+    {
+      icon: <Scale className="w-6 h-6" />,
+      title: "Gleichbehandlungsgrundsatz",
+      subtitle: "§ 1b BetrAVG",
+      description: "Gleichbehandlung aller Arbeitnehmer bei betrieblichen Versorgungszusagen.",
+      details: [
+        "Keine willkürliche Ungleichbehandlung",
+        "Sachliche Differenzierung erlaubt",
+        "Gleiches Recht auf Entgeltumwandlung",
+        "Transparente Kriterien"
+      ],
+      deadline: "Fortlaufend",
+      penalty: "Nachzahlungs- und Schadensersatzansprüche"
     }
   ];
 
-  const risks = [
+  const riskAreas = [
     {
-      title: "Haftungsrisiken",
-      description: "Bei fehlerhafter Beratung oder unvollständiger Aufklärung können Schadensersatzansprüche entstehen."
+      title: "Unzureichende Aufklärung",
+      risk: "Hoch",
+      description: "Mangelhafte Information der Mitarbeiter über bAV-Möglichkeiten",
+      consequences: ["Bußgelder bis 25.000 €", "Nachzahlungspflichten", "Reputationsschäden"]
     },
     {
-      title: "Compliance-Verstöße",
-      description: "Nichteinhaltung gesetzlicher Vorgaben kann zu rechtlichen Konsequenzen führen."
+      title: "Fehlender Zuschuss",
+      risk: "Sehr Hoch", 
+      description: "Nicht gezahlte 15% Zuschüsse zur Entgeltumwandlung",
+      consequences: ["Nachzahlung mit Zinsen", "Rechtliche Auseinandersetzungen", "Hohe Nachzahlungssummen"]
     },
     {
-      title: "Verwaltungsaufwand",
-      description: "Komplexe Administration kann ohne professionelle Unterstützung überfordernd werden."
+      title: "Veraltete Versorgungsordnungen",
+      risk: "Mittel",
+      description: "Nicht aktuelle Regelungen zu bAV in Arbeitsverträgen",
+      consequences: ["Rechtsunsicherheit", "Ungewollte Verpflichtungen", "Compliance-Probleme"]
+    },
+    {
+      title: "Ungleichbehandlung",
+      risk: "Hoch",
+      description: "Diskriminierende Behandlung bei bAV-Angeboten",
+      consequences: ["Schadensersatzansprüche", "Arbeitsgerichtliche Verfahren", "Nachzahlungen"]
+    }
+  ];
+
+  const solutions = [
+    {
+      title: "Automatisierte Compliance",
+      description: "Unsere Plattform stellt sicher, dass alle gesetzlichen Anforderungen automatisch erfüllt werden.",
+      features: ["Automatische Mitarbeiterinformation", "Fristenverwaltung", "Dokumentenerstellung", "Compliance-Monitoring"]
+    },
+    {
+      title: "Rechtssichere Prozesse",
+      description: "Alle Prozesse sind rechtlich geprüft und werden kontinuierlich an neue Gesetzgebung angepasst.",
+      features: ["Aktuelle Gesetzestexte", "Automatische Updates", "Juristische Prüfung", "Behördenkonforme Dokumentation"]
+    },
+    {
+      title: "Vollständige Dokumentation",
+      description: "Lückenlose Dokumentation aller bAV-relevanten Vorgänge für Compliance und Nachweis.",
+      features: ["30-Jahre Archivierung", "Revisionssichere Speicherung", "Schnelle Auffindbarkeit", "Export-Funktionen"]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-acencia py-16 md:py-24">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
-              Gesetzliche <span className="text-orange-600">Pflichten</span> – bAV
+            <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight font-heading">
+              Gesetzliche <span className="text-acencia-orange">Pflichten</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-4 leading-relaxed">
-              Was Arbeitgeber bei der betrieblichen Altersvorsorge beachten müssen
-            </p>
-            <p className="text-sm text-gray-500">
-              Informationen aus dem Geschäftsbetrieb gemäß §93 HGB
+            <p className="text-xl text-acencia-blue max-w-3xl mx-auto leading-relaxed">
+              Alle wichtigen Arbeitgeberpflichten im Bereich der betrieblichen Altersvorsorge auf einen Blick.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Introduction */}
-      <section className="bg-gray-50 py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-gray-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                <Scale className="w-6 h-6 text-orange-600" />
-              </div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Rechtlicher Rahmen
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Alert Box */}
+          <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-8">
+            <div className="flex items-start space-x-4">
+              <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
               <div>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Die betriebliche Altersvorsorge ist nicht nur eine freiwillige Zusatzleistung, sondern bringt 
-                  auch gesetzliche Verpflichtungen für Arbeitgeber mit sich. Diese ergeben sich hauptsächlich 
-                  aus dem Betriebsrentengesetz (BetrAVG) und weiteren relevanten Gesetzen.
+                <h3 className="text-lg font-semibold text-red-300 mb-2 font-heading">
+                  Wichtiger Hinweis
+                </h3>
+                <p className="text-red-200 text-sm">
+                  Die Nichteinhaltung gesetzlicher Pflichten kann zu erheblichen Bußgeldern und Nachzahlungsverpflichtungen führen. 
+                  Lassen Sie sich professionell beraten, um Risiken zu vermeiden.
                 </p>
-                <p className="text-gray-700 leading-relaxed">
-                  Seit der Einführung des Rechtsanspruchs auf Entgeltumwandlung im Jahr 2002 und den verschärften 
-                  Regelungen seit 2018 (Betriebsrentenstärkungsgesetz) sind die Anforderungen deutlich gestiegen.
-                </p>
-              </div>
-              <div className="bg-orange-50 rounded-lg p-6 border border-orange-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Wichtige Gesetze</h3>
-                <ul className="space-y-2 text-gray-700 text-sm">
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Betriebsrentengesetz (BetrAVG)</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Betriebsrentenstärkungsgesetz (BRSG)</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Einkommensteuergesetz (EStG)</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Sozialgesetzbuch IV (SGB IV)</span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Obligations Section */}
-      <section className="bg-white py-16 md:py-20">
+      {/* Main Obligations */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
               Ihre Pflichten als Arbeitgeber
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Diese gesetzlichen Verpflichtungen müssen alle Arbeitgeber bei der bAV beachten.
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Diese gesetzlichen Verpflichtungen müssen Sie bei der betrieblichen Altersvorsorge beachten
             </p>
           </div>
-          
-          <div className="space-y-6">
+
+          <div className="space-y-8">
             {obligations.map((obligation, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-all duration-150">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <div className="text-orange-600">
-                      {obligation.icon}
+              <div key={index} className="bg-white rounded-lg p-8 hover:bg-gray-50 transition-colors duration-150">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Main Info */}
+                  <div className="lg:col-span-2">
+                    <div className="flex items-start space-x-4 mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-br from-acencia-orange/10 to-acencia-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div className="text-acencia-orange">
+                          {obligation.icon}
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-1 font-heading">
+                          {obligation.title}
+                        </h3>
+                        <p className="text-acencia-orange text-sm font-medium mb-2">
+                          {obligation.subtitle}
+                        </p>
+                        <p className="text-gray-600 leading-relaxed">
+                          {obligation.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-3 font-heading">
+                        Details:
+                      </h4>
+                      <ul className="space-y-2">
+                        {obligation.details.map((detail, idx) => (
+                          <li key={idx} className="flex items-start space-x-3">
+                            <CheckCircle className="w-4 h-4 text-acencia-orange flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-600 text-sm">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {obligation.title}
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed mb-3 font-medium">
-                      {obligation.description}
-                    </p>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      {obligation.details}
-                    </p>
+
+                  {/* Timeline & Penalty */}
+                  <div className="space-y-6">
+                    <div className="bg-blue-50 rounded-lg p-4">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <Clock className="w-4 h-4 text-blue-600" />
+                        <h4 className="font-semibold text-blue-900 text-sm font-heading">
+                          Frist
+                        </h4>
+                      </div>
+                      <p className="text-blue-800 text-sm">
+                        {obligation.deadline}
+                      </p>
+                    </div>
+
+                    <div className="bg-red-50 rounded-lg p-4">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <AlertTriangle className="w-4 h-4 text-red-600" />
+                        <h4 className="font-semibold text-red-900 text-sm font-heading">
+                          Bei Nichtbeachtung
+                        </h4>
+                      </div>
+                      <p className="text-red-800 text-sm">
+                        {obligation.penalty}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -158,121 +260,118 @@ const EmployerObligationsPage = () => {
         </div>
       </section>
 
-      {/* Risks Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      {/* Risk Areas */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-gray-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
-                <AlertTriangle className="w-6 h-6 text-red-600" />
-              </div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Risiken bei Nichteinhaltung
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {risks.map((risk, index) => (
-                <div key={index} className="bg-red-50 rounded-lg p-6 border border-red-200">
-                  <div className="flex items-start space-x-3 mb-4">
-                    <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {risk.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
-                    {risk.description}
-                  </p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Häufige Risikobereiche
+            </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Diese Bereiche führen erfahrungsgemäß häufig zu Compliance-Problemen
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {riskAreas.map((area, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 border-l-4 border-red-500">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 font-heading">
+                    {area.title}
+                  </h3>
+                  <span className={`px-2 py-1 rounded text-xs font-medium ${
+                    area.risk === 'Sehr Hoch' ? 'bg-red-100 text-red-800' :
+                    area.risk === 'Hoch' ? 'bg-orange-100 text-orange-800' :
+                    'bg-yellow-100 text-yellow-800'
+                  }`}>
+                    Risiko: {area.risk}
+                  </span>
                 </div>
-              ))}
-            </div>
+                
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  {area.description}
+                </p>
+
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-sm font-heading">
+                    Mögliche Konsequenzen:
+                  </h4>
+                  <ul className="space-y-1">
+                    {area.consequences.map((consequence, idx) => (
+                      <li key={idx} className="flex items-start space-x-2">
+                        <AlertTriangle className="w-3 h-3 text-red-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600 text-xs">{consequence}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Solution Section */}
-      <section className="bg-white py-16 md:py-20">
+      {/* ACENCIA Solutions */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-green-50 rounded-lg p-8 border border-green-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                <CheckCircle className="w-6 h-6 text-green-600" />
-              </div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Wie ACENCIA Sie unterstützt
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  ACENCIA entlastet Sie bei der rechtskonformen Umsetzung Ihrer bAV-Pflichten. 
-                  Unsere digitale Plattform automatisiert die Verwaltung und stellt sicher, 
-                  dass alle gesetzlichen Anforderungen erfüllt werden.
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Wie ACENCIA Sie unterstützt
+            </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Unsere Lösung stellt sicher, dass Sie alle gesetzlichen Anforderungen erfüllen
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {solutions.map((solution, index) => (
+              <div key={index} className="bg-white rounded-lg p-8 hover:bg-gray-50 transition-colors duration-150">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 font-heading">
+                  {solution.title}
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {solution.description}
                 </p>
-                <p className="text-gray-700 leading-relaxed">
-                  Von der korrekten Dokumentation bis hin zur automatischen Berechnung des 
-                  15%-Arbeitgeberzuschusses – wir sorgen für Rechtssicherheit und Compliance.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Unsere Leistungen</h3>
+                
                 <ul className="space-y-3">
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">Rechtskonforme Einrichtung</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">Automatische Compliance-Prüfung</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">Vollständige Dokumentation</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">Mitarbeiterkommunikation</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">Laufende Aktualisierung</span>
-                  </li>
+                  {solution.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-acencia-orange flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600 text-sm">{feature}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="bg-orange-50 py-16 md:py-20">
+      {/* CTA Section */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-orange-200 text-center">
-            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Calendar className="w-8 h-8 text-orange-600" />
-            </div>
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
-              Rechtssichere bAV implementieren
+          <div className="bg-white rounded-lg p-12 text-center">
+            <Shield className="w-16 h-16 text-acencia-orange mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 font-heading">
+              Compliance-Check gefällig?
             </h2>
-            <p className="text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Lassen Sie sich von unseren Experten beraten, wie Sie alle gesetzlichen Pflichten 
-              erfüllen und gleichzeitig von den Vorteilen der bAV profitieren können.
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Lassen Sie uns prüfen, ob Ihr Unternehmen alle gesetzlichen Pflichten im Bereich der betrieblichen Altersvorsorge erfüllt.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2"
+              <button 
+                className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
                 onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
               >
-                <span>Kostenlose Beratung vereinbaren</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button 
-                className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-lg font-medium transition-colors duration-150"
-                onClick={() => window.location.href = '/die-bav'}
+                <span>Kostenloser Compliance-Check</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+              <Link
+                to="/kontakt"
+                className="border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
               >
-                Zurück zur bAV-Übersicht
-              </Button>
+                <span>Beratung anfragen</span>
+              </Link>
             </div>
           </div>
         </div>
