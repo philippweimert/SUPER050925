@@ -13,14 +13,14 @@ from email.mime.text import MIMEText
 from fastapi import FastAPI, APIRouter, HTTPException
 from pydantic import BaseModel, Field, EmailStr
 from starlette.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from starlette.responses import FileResponse
+# from fastapi.staticfiles import StaticFiles -> No longer needed
+# from starlette.responses import FileResponse -> No longer needed
 
 # Load environment variables from .env file
 load_dotenv()
 
 # --- Configuration ---
-ROOT_DIR = Path(__file__).parent
+# ROOT_DIR = Path(__file__).parent -> No longer needed
 DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://user:password@localhost/dbname")
 
 # --- Database Setup ---
@@ -162,18 +162,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- Serve Frontend ---
-# This must be placed *after* the API router and *before* the catch-all route.
-# It serves static files (like CSS, JS, images) from the React build directory.
-app.mount("/static", StaticFiles(directory=ROOT_DIR / "../frontend/build/static"), name="static")
-
-
-# This catch-all route serves the main `index.html` file for any path that
-# is not an API route or a static file. This is crucial for client-side
-# routing in a Single Page Application (SPA) like React.
-@app.get("/{full_path:path}")
-async def serve_react_app(full_path: str):
-    index_path = ROOT_DIR / "../frontend/build/index.html"
-    if not index_path.is_file():
-        raise HTTPException(status_code=404, detail="Frontend not found. Build the frontend first.")
-    return FileResponse(index_path)
+# --- Frontend Serving Removed ---
+# The frontend is now served by a dedicated Static Site service on Render.
+# The following code has been removed as it is no longer needed and caused a crash.
+# app.mount("/static", ...)
+# @app.get("/{full_path:path}") ...

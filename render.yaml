@@ -1,19 +1,30 @@
 services:
+  # Backend Service (Web Service)
   - type: web
-    name: acencia-unified-app
+    name: acencia-backend
     env: python
     plan: free
-    buildCommand: |
-      pip install -r backend/requirements.txt
-      cd frontend
-      yarn install
-      yarn build
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
     startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
-    cwd: backend
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11
+        value: 3.11.9 # Korrigierte Patch-Version
       - key: DATABASE_URL
         fromDatabase:
-          name: your-database-name-here
+          name: acencia-db # WICHTIG: Du musst eine DB mit diesem Namen erstellen
           property: internalUrl
+
+  # Frontend Service (Static Site)
+  - type: static
+    name: acencia-frontend
+    plan: free
+    rootDir: frontend
+    buildCommand: yarn install && yarn build
+    publishDirectory: build # Das Build-Verzeichnis für die statischen Dateien
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: acencia-backend
+          property: url # Holt sich automatisch die URL des Backend-Dienstes
