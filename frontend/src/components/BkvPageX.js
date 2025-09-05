@@ -1,242 +1,259 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Button } from "./ui/button";
-import { Heart, Shield, Building2, TrendingUp, Users, CheckCircle, ArrowRight, Gift, Euro, Star } from "lucide-react";
+import { Heart, Euro, Users, Shield, CheckCircle, ArrowRight, Building2, Activity, TrendingUp, Clock } from "lucide-react";
 
 const BkvPageX = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const benefits = [
     {
-      title: "Steuerliche Vorteile",
-      description: "Bis zu 50 Euro monatlich als steuerfreier Sachbezug - keine Lohnnebenkosten für den Arbeitgeber",
-      icon: <Euro className="w-5 h-5" />
+      icon: <Heart className="w-6 h-6" />,
+      title: "Mitarbeitergesundheit",
+      description: "Fördern Sie die Gesundheit und das Wohlbefinden Ihrer Mitarbeiter durch erweiterte medizinische Leistungen."
     },
     {
-      title: "Mitarbeiterbindung",
-      description: "Erhöhte Zufriedenheit und Loyalität durch attraktives Zusatzangebot",
-      icon: <Heart className="w-5 h-5" />
+      icon: <Euro className="w-6 h-6" />,
+      title: "Steuerliche Vorteile",  
+      description: "Nutzen Sie steuerliche Gestaltungsmöglichkeiten und reduzieren Sie Ihre Lohnnebenkosten."
     },
     {
-      title: "Wettbewerbsvorteil",
-      description: "Positionierung als attraktiver Arbeitgeber im Kampf um Fachkräfte",
-      icon: <Star className="w-5 h-5" />
+      icon: <Users className="w-6 h-6" />,
+      title: "Attraktiver Arbeitgeber",
+      description: "Positionieren Sie sich als attraktiver Arbeitgeber und stärken Sie die Mitarbeiterbindung."
     },
     {
-      title: "Flexible Gestaltung",
-      description: "Individuelle Tarifauswahl je nach Unternehmensbedürfnissen und Budget",
-      icon: <Gift className="w-5 h-5" />
+      icon: <Shield className="w-6 h-6" />,
+      title: "Rechtssicherheit",
+      description: "Profitieren Sie von rechtssicherer Umsetzung und professioneller Verwaltung."
     }
   ];
 
-  const features = [
+  const services = [
     {
-      title: "Ambulante Zusatzleistungen",
-      description: "Privatärztliche Behandlung, Chefarztbehandlung, Ein-/Zweibettzimmer im Krankenhaus"
+      title: "Private Krankenversicherung",
+      features: [
+        "Chefarztbehandlung im Krankenhaus",
+        "Einzelzimmer oder Zweibettzimmer", 
+        "Freie Krankenhauswahl",
+        "Erweiterte Diagnostik"
+      ]
     },
     {
       title: "Zahnzusatzversicherung",
-      description: "Hochwertige Zahnbehandlungen, Implantate und Zahnersatz ohne Wartezeiten"
+      features: [
+        "Zahnersatz bis zu 100%",
+        "Professionelle Zahnreinigung",
+        "Kieferorthopädie für Erwachsene",
+        "Implantate und Inlays"
+      ]
     },
     {
-      title: "Vorsorgeuntersuchungen",
-      description: "Erweiterte Vorsorge über gesetzliche Leistungen hinaus für Früherkennung"
+      title: "Zusatzleistungen",
+      features: [
+        "Auslandsreisekrankenversicherung",
+        "Krankentagegeld",
+        "Vorsorgeuntersuchungen",
+        "Alternative Heilmethoden"
+      ]
+    }
+  ];
+
+  const implementationSteps = [
+    {
+      step: "1",
+      title: "Bedarfsanalyse",
+      description: "Gemeinsame Analyse Ihrer Anforderungen und Ziele für die betriebliche Krankenversicherung."
     },
     {
-      title: "Alternative Heilmethoden",
-      description: "Naturheilverfahren, Osteopathie und Homöopathie als sinnvolle Ergänzung"
+      step: "2",
+      title: "Konzeptentwicklung", 
+      description: "Entwicklung eines maßgeschneiderten bKV-Konzepts für Ihr Unternehmen."
     },
     {
-      title: "Sehhilfen",
-      description: "Brille und Kontaktlinsen mit attraktiven Zuschüssen alle zwei Jahre"
+      step: "3",
+      title: "Umsetzung",
+      description: "Professionelle Implementierung und Integration in Ihre bestehenden HR-Prozesse."
     },
     {
-      title: "Auslandsreiseschutz",
-      description: "Umfassender Krankenversicherungsschutz bei Reisen ins Ausland"
+      step: "4",
+      title: "Betreuung",
+      description: "Kontinuierliche Betreuung und Optimierung Ihrer bKV-Lösung."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-acencia py-16 md:py-24">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
-              bKV für <span className="text-orange-600">Unternehmen</span>
+            <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight font-heading">
+              bKV für <span className="text-acencia-orange">Unternehmen</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-4 leading-relaxed">
-              Gesundheitsvorsorge als starkes Mitarbeiterbenefit
+            <p className="text-xl text-acencia-blue max-w-3xl mx-auto leading-relaxed mb-8">
+              Stärken Sie die Gesundheit Ihrer Mitarbeiter und positionieren Sie sich als attraktiver Arbeitgeber mit unserer betrieblichen Krankenversicherung.
             </p>
-            <p className="text-sm text-gray-500">
-              Informationen aus dem Geschäftsbetrieb gemäß §93 HGB
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Introduction */}
-      <section className="bg-gray-50 py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-gray-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                <Building2 className="w-6 h-6 text-orange-600" />
-              </div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Warum bKV für Ihr Unternehmen?
-              </h2>
-            </div>
-            
-            <div className="space-y-4">
-              <p className="text-gray-700 leading-relaxed">
-                In Zeiten des Fachkräftemangels sind attraktive Zusatzleistungen entscheidend für die Mitarbeitergewinnung und -bindung. 
-                Die betriebliche Krankenversicherung bietet Ihnen als Arbeitgeber die Möglichkeit, Ihren Mitarbeitern wertvolle 
-                Gesundheitsleistungen anzubieten, ohne dabei hohe Kosten zu verursachen.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                <strong className="text-gray-900">Der Clou:</strong> Als Sachbezug ist die bKV bis 50 Euro monatlich steuer- und 
-                sozialabgabenfrei. Das bedeutet für Sie als Arbeitgeber keine zusätzlichen Lohnnebenkosten, während Ihre Mitarbeiter 
-                von hochwertigen Gesundheitsleistungen profitieren.
-              </p>
-            </div>
+            <button 
+              className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-acencia-orange focus:ring-offset-2 focus:ring-offset-acencia flex items-center justify-center space-x-2 mx-auto"
+              onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
+            >
+              <span>Kostenlose Beratung vereinbaren</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="flex items-center mb-12">
-            <div className="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center mr-6">
-              <TrendingUp className="w-6 h-6 text-orange-600" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Vorteile für Ihr Unternehmen
-              </h2>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Vorteile für Ihr Unternehmen
+            </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Investieren Sie in die Gesundheit Ihrer Mitarbeiter und profitieren Sie vielfach
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-all duration-150"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <div className="text-orange-600">
-                      {benefit.icon}
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      {benefit.description}
-                    </p>
+              <div key={index} className="bg-white rounded-lg p-6 text-center hover:bg-gray-50 transition-colors duration-150">
+                <div className="w-14 h-14 bg-gradient-to-br from-acencia-orange/10 to-acencia-orange/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="text-acencia-orange">
+                    {benefit.icon}
                   </div>
                 </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 font-heading">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed">
+                  {benefit.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      {/* Services Overview */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="flex items-center mb-12">
-            <div className="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center mr-6">
-              <Shield className="w-6 h-6 text-orange-600" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
-                Typische Leistungsbereiche
-              </h2>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Unsere bKV-Leistungen
+            </h2>
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Umfassende Gesundheitsvorsorge für Ihre Mitarbeiter
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-lg p-6 border border-gray-200 hover:border-gray-300 transition-all duration-150"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-base font-semibold text-gray-900 mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-white rounded-lg p-8 hover:bg-gray-50 transition-colors duration-150">
+                <h3 className="text-xl font-semibold text-gray-900 mb-6 font-heading">
+                  {service.title}
+                </h3>
+                
+                <ul className="space-y-3">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-acencia-orange flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600 text-base">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Coming Soon Note */}
-      <section className="bg-white py-16 md:py-20">
+      {/* Implementation Process */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-blue-50 rounded-lg p-8 border border-blue-200 text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Users className="w-8 h-8 text-blue-600" />
-            </div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 tracking-tight">
-              Weitere Inhalte folgen
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight leading-tight font-heading">
+              Unser Vorgehen
             </h2>
-            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Diese Seite wird kontinuierlich mit weiteren detaillierten Informationen zur betrieblichen 
-              Krankenversicherung erweitert. Kontaktieren Sie uns für aktuelle Informationen.
+            <p className="text-lg text-acencia-blue max-w-2xl mx-auto leading-relaxed">
+              Von der ersten Beratung bis zur erfolgreichen Umsetzung
             </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {implementationSteps.map((step, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 text-center hover:bg-gray-50 transition-colors duration-150">
+                <div className="w-16 h-16 bg-acencia-orange text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 font-heading">
+                  {step.step}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 font-heading">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="bg-orange-50 py-16 md:py-20">
+      {/* Coming Soon Banner */}
+      <section className="bg-acencia py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-          <div className="bg-white rounded-lg p-8 border border-orange-200 text-center">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
-              Interessiert an betrieblicher Krankenversicherung?
+          <div className="bg-white rounded-lg p-12 text-center">
+            <Activity className="w-20 h-20 text-acencia-orange mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 font-heading">
+              Digitale bKV-Lösung in Entwicklung
             </h2>
-            <p className="text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Kontaktieren Sie uns für weitere Informationen zur bKV und wie sie Ihr Unternehmen bei der 
-              Mitarbeitergewinnung und -bindung unterstützen kann.
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Wir arbeiten intensiv an unserer digitalen Plattform für die betriebliche Krankenversicherung. Lassen Sie sich kostenfrei beraten und erfahren Sie als Erster von unserem Launch.
             </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <Building2 className="w-12 h-12 text-acencia-orange mx-auto mb-3" />
+                <h4 className="font-semibold text-gray-900 mb-1 font-heading">Für Unternehmen</h4>
+                <p className="text-sm text-gray-600">Vollautomatisierte Verwaltung</p>
+              </div>
+              <div className="text-center">
+                <Users className="w-12 h-12 text-acencia-orange mx-auto mb-3" />
+                <h4 className="font-semibold text-gray-900 mb-1 font-heading">Für Mitarbeiter</h4>
+                <p className="text-sm text-gray-600">Einfache Antragsstellung</p>
+              </div>
+              <div className="text-center">
+                <Shield className="w-12 h-12 text-acencia-orange mx-auto mb-3" />
+                <h4 className="font-semibold text-gray-900 mb-1 font-heading">Rechtssicher</h4>
+                <p className="text-sm text-gray-600">Automatische Compliance</p>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-150 flex items-center justify-center space-x-2"
+              <button 
+                className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
                 onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
               >
-                <span>Beratungstermin vereinbaren</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Link to="/bkv">
-                <Button className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-lg font-medium transition-colors duration-150">
-                  Zurück zur Übersicht
-                </Button>
+                <span>Vormerken lassen</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+              <Link
+                to="/kontakt"
+                className="border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+              >
+                <span>Mehr erfahren</span>
               </Link>
             </div>
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );
