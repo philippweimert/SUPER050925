@@ -66,6 +66,57 @@ def test_contact_form():
         print(f"❌ Contact form test failed: {e}")
         return False
 
+def test_contact_form_no_name():
+    """Test POST /api/contact endpoint without a name"""
+    print("\n=== Testing Contact Form Submission (No Name) ===")
+    try:
+        test_data = {
+            "email": "jane.doe@example.com",
+            "company": "Doe Inc.",
+            "phone": "+1 555 123 4567",
+            "message": "This is a test message without a name."
+        }
+
+        response = requests.post(
+            f"{BASE_URL}/contact",
+            json=test_data,
+            headers={"Content-Type": "application/json"},
+            timeout=10
+        )
+
+        print(f"Status Code: {response.status_code}")
+        print(f"Response: {response.json()}")
+
+        if response.status_code == 200:
+            data = response.json()
+            if (data.get("status") == "success" and
+                "message" in data):
+                print("✅ Contact form (no name) submission working correctly")
+                return True
+            else:
+                print("❌ Contact form (no name) returned unexpected response structure")
+                return False
+        else:
+            print(f"❌ Contact form (no name) failed with status {response.status_code}")
+            return False
+
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Contact form (no name) request failed: {e}")
+        return False
+    except Exception as e:
+        print(f"❌ Contact form (no name) test failed: {e}")
+        return False
+
 if __name__ == "__main__":
-    success = test_contact_form()
-    sys.exit(0 if success else 1)
+    results = {
+        "with_name": test_contact_form(),
+        "no_name": test_contact_form_no_name()
+    }
+
+    all_passed = all(results.values())
+
+    print("\n=== Test Summary ===")
+    for test_name, success in results.items():
+        print(f"{'✅' if success else '❌'} Test '{test_name}'")
+
+    sys.exit(0 if all_passed else 1)

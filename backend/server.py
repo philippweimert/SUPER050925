@@ -13,6 +13,8 @@ from email.mime.text import MIMEText
 from fastapi import FastAPI, APIRouter, HTTPException
 from pydantic import BaseModel, Field, EmailStr
 from starlette.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from starlette.responses import FileResponse
 
 # Load environment variables from .env file
 load_dotenv()
@@ -46,7 +48,7 @@ metadata.create_all(engine)
 
 # --- Pydantic Models ---
 class ContactForm(BaseModel):
-    name: str
+    name: str = ""
     email: EmailStr
     company: Optional[str] = None
     phone: Optional[str] = None
@@ -107,6 +109,7 @@ async def submit_contact_form(contact_data: ContactForm):
     try:
         # 1. Save to database
         query = contacts.insert().values(
+            id=str(uuid.uuid4()),
             name=contact_data.name,
             email=contact_data.email,
             company=contact_data.company,
@@ -158,3 +161,19 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- Serve Frontend ---
+# This must be placed *after* the API router and *before* the catch-all route.
+# It serves static files (like CSS, JS, images) from the React build directory.
+app.mount("/static", StaticFiles(directory=ROOT_DIR / "../frontend/build/static"), name="static")
+
+
+# This catch-all route serves the main `index.html` file for any path that
+# is not an API route or a static file. This is crucial for client-side
+# routing in a Single Page Application (SPA) like React.
+@app.get("/{full_path:path}")
+async def serve_react_app(full_path: str):
+    index_path = ROOT_DIR / "../frontend/build/index.html"
+    if not index_path.is_file():
+        raise HTTPException(status_code=404, detail="Frontend not found. Build the frontend first.")
+    return FileResponse(index_path)
