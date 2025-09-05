@@ -14,7 +14,7 @@ module.exports = {
   		},
   		fontFamily: {
   			inter: ['Open Sans', 'system-ui', 'sans-serif'],
-  			display: ['Open Sans', 'system-ui', 'sans-serif'],
+  			display: ['Tenor Sans', 'system-ui', 'serif'],
   			sans: ['Open Sans', 'system-ui', 'sans-serif'],
   			heading: ['Open Sans', 'system-ui', 'sans-serif'],
   			body: ['Open Sans', 'system-ui', 'sans-serif'],
