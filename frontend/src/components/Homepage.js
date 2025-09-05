@@ -50,25 +50,25 @@ const Homepage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-acencia via-acencia to-acencia-light">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
       {/* Professional Hero Section */}
-      <div className="bg-white">
+      <div className="bg-acencia">
         <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-24">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
               {/* Left Content - Hero Text */}
               <div className="lg:col-span-7">
-                {/* Main Headline - Apple Style */}
-                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 mb-6 leading-tight tracking-tight">
+                {/* Main Headline - Corporate Dark Style */}
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight font-heading">
                   Digital. Einfach.{" "}
-                  <span className="text-orange-500">Modern.</span>
+                  <span className="text-acencia-orange">Modern.</span>
                 </h1>
 
                 {/* Subtitle - Professional */}
-                <p className="text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
+                <p className="text-xl text-acencia-blue mb-8 max-w-2xl leading-relaxed">
                   Automatisieren Sie Ihre betriebliche Altersvorsorge komplett
                 </p>
 
@@ -79,12 +79,12 @@ const Homepage = () => {
                       key={index} 
                       className="flex items-center space-x-3"
                     >
-                      <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <div className="text-orange-600">
+                      <div className="w-6 h-6 bg-acencia-orange/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="text-acencia-orange">
                           {benefit.icon}
                         </div>
                       </div>
-                      <span className="text-gray-700 font-medium">
+                      <span className="text-white font-medium">
                         {benefit.text}
                       </span>
                     </div>
@@ -95,7 +95,7 @@ const Homepage = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium text-base transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 flex items-center justify-center space-x-2"
+                    className="bg-acencia-orange hover:bg-acencia-orange/90 text-white px-6 py-3 rounded-lg font-medium text-base transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-acencia-orange focus:ring-offset-2 focus:ring-offset-acencia flex items-center justify-center space-x-2"
                   >
                     <span>Jetzt kostenfrei starten</span>
                     <ArrowRight className="w-4 h-4" />
@@ -103,7 +103,7 @@ const Homepage = () => {
                   
                   <Link 
                     to="/die-bav?autoplay=true"
-                    className="border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-6 py-3 rounded-lg font-medium text-base transition-colors duration-200 flex items-center justify-center space-x-2"
+                    className="border border-acencia-blue hover:border-white text-acencia-blue hover:text-white px-6 py-3 rounded-lg font-medium text-base transition-colors duration-200 flex items-center justify-center space-x-2"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
@@ -117,8 +117,8 @@ const Homepage = () => {
               <div className="lg:col-span-5 space-y-8">
                 
                 {/* Video Placeholder Space */}
-                <div className="bg-gray-50 border border-gray-200 rounded-lg h-48 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
+                <div className="bg-white/10 border border-acencia-blue/30 rounded-lg h-48 flex items-center justify-center">
+                  <div className="text-center text-acencia-blue">
                     <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
@@ -126,18 +126,18 @@ const Homepage = () => {
                   </div>
                 </div>
                 
-                {/* Solutions Cards - Professional */}
+                {/* Solutions Cards - Professional White Cards */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Unsere Lösungen</h3>
+                  <h3 className="text-lg font-semibold text-white mb-4 font-heading">Unsere Lösungen</h3>
                   <div className="grid grid-cols-3 gap-3">
                     {expertiseAreas.map((area, index) => (
                       <Link 
                         key={index}
                         to={area.link}
-                        className="group bg-white border border-gray-200 rounded-lg p-4 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
+                        className="group bg-white border border-gray-100 rounded-lg p-4 hover:bg-gray-50 hover:shadow-sm transition-all duration-200"
                       >
                         <div className="text-center">
-                          <h4 className="text-sm font-medium text-gray-900 mb-1">
+                          <h4 className="text-sm font-medium text-gray-900 mb-1 font-heading">
                             {area.title}
                           </h4>
                           <p className="text-xs text-gray-600">
@@ -149,8 +149,8 @@ const Homepage = () => {
                   </div>
                 </div>
 
-                {/* Professional Onboarding Card */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                {/* Professional Onboarding Card - White Card */}
+                <div className="bg-white border border-gray-100 rounded-lg p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
@@ -158,7 +158,7 @@ const Homepage = () => {
                       </div>
                       
                       <div>
-                        <h3 className="text-base font-semibold text-gray-900">
+                        <h3 className="text-base font-semibold text-gray-900 font-heading">
                           <span className="text-green-600">0,00 €</span> Onboarding
                         </h3>
                         <p className="text-sm text-gray-600">
